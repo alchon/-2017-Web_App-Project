@@ -7,6 +7,4 @@
         array_push($result, $row['ID']);
     }
 ?>
-<div>
-    <? json_encode($result) ?>
-</div>
+<? echo json_encode($result) ?>
