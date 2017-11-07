@@ -10,7 +10,7 @@ create table store (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table menu (
-    ID          integer auto_increment not null,
+    ID          integer not null,
     name        varchar(20) CHARSET utf8,
     price       integer,
     foreign key (ID) references store (ID)
