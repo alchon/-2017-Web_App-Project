@@ -9,10 +9,10 @@
         function getAll() {
             require __DIR__ . '/api/restaruants/getAll.php';
         }
-        function getOne() {
+        function getOne($args) {
             require __DIR__ . '/api/restaruants/getOne.php';
         }
-        function getNearby() {
+        function getNearby($args) {
             require __DIR__ . '/api/restaruants/getNearby.php';
         }
     }
