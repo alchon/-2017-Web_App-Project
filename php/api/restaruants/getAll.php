@@ -1,4 +1,5 @@
 <?php
+    include '../../include/core.php';
     $restaruants = array(
         0 => 'Test',
         1 => 'Foo',
