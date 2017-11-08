@@ -2,31 +2,48 @@
 <head>
     <meta charset="UTF-8">
     <title>에리카 뭐먹지?</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header>
-        <!-- 중앙 상단에 크게 검색하면 지도에 해당하는 음식점 하이라이팅 -->
-        <form action="" method="post">
-            <input type="text">
-            <input type="submit">
+        <div class="drawer-toggle" onclick="setOpened()"><i class="ic-menu"><img src="http://placehold.it/56x56" alt=""></i></div>
+        <form action="" method="post" class="textfield">
+            <input id="text" type="text">
+            <input id="search" type="submit" value="">
         </form>
     </header>
 
-    <nav>
-        <!-- 사이드에 메뉴버튼 만들어서 누르면 보이게 선택하면 해당 음식점 리스트 페이지로 넘어감 -->
+    <nav id="drawer">
         <ul>
-            <li>한식</li>
-            <li>고깃집</li>
-            <li>중식</li>
-            <li>분식</li>
+            <li><a href="">한식</a></li>
+            <li><a href="">고깃집</a></li>
+            <li><a href="">중식</a></li>
+            <li><a href="">분식</a></li>
         </ul>
     </nav>
+    <div id="blocker" onclick="removeOpened()"></div>
 
     <main>
         <div class="map">
-            <!-- 지도나올거 누르면 해당 음식점 페이지로 넘어감-->
-            <img src="map.png">
+            <img src="http://placehold.it/800x800">
         </div>
     </main>
+
+    <script>
+        function setOpened() {
+            var drawer = document.getElementById("drawer");
+            var blocker = document.getElementById("blocker");
+            drawer.classList.add("opened");
+            blocker.classList.add("opened");
+        }
+        function removeOpened() {
+            if(location.hash != "#drawer"){
+                var drawer = document.getElementById("drawer");
+                var blocker = document.getElementById("blocker");
+                drawer.classList.remove("opened");
+                blocker.classList.remove("opened");
+            }
+        }
+    </script>
 </body>
 </html>
