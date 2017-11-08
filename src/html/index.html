@@ -1,17 +1,49 @@
-<!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>index</title>
-    <link rel="stylesheet" type="text/css" href="../css/stylesheets.css">
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <title>에리카 뭐먹지?</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="banner">
-        <img src="../img/HYU_logo.png" alt="Hanyang Univ. ERICA" class="logo">
-    </div>
-    <form id="searchbox" action="">
-        <input id="search" type="text" placeholder="Type here">
-        <input id="submit" type="submit" value="Search">
-    </form>
+    <header>
+        <div class="drawer-toggle" onclick="setOpened()"><i class="ic-menu"><img src="http://placehold.it/56x56" alt=""></i></div>
+        <form action="" method="post" class="textfield">
+            <input id="text" type="text">
+            <input id="search" type="submit" value="">
+        </form>
+    </header>
+
+    <nav id="drawer">
+        <ul>
+            <li><a href="">한식</a></li>
+            <li><a href="">고깃집</a></li>
+            <li><a href="">중식</a></li>
+            <li><a href="">분식</a></li>
+        </ul>
+    </nav>
+    <div id="blocker" onclick="removeOpened()"></div>
+
+    <main>
+        <div class="map">
+            <img src="http://placehold.it/800x800">
+        </div>
+    </main>
+
+    <script>
+        function setOpened() {
+            var drawer = document.getElementById("drawer");
+            var blocker = document.getElementById("blocker");
+            drawer.classList.add("opened");
+            blocker.classList.add("opened");
+        }
+        function removeOpened() {
+            if(location.hash != "#drawer"){
+                var drawer = document.getElementById("drawer");
+                var blocker = document.getElementById("blocker");
+                drawer.classList.remove("opened");
+                blocker.classList.remove("opened");
+            }
+        }
+    </script>
 </body>
 </html>
