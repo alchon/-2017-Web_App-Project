@@ -13,5 +13,5 @@
 
 
 ## Intoroduction
-when we have a lunch time, we have to think what to eat. As you know this is very hard.
+When we have a lunch time, we have to think what to eat. As you know this is very hard.
 So, we thought about list of restaurants in front of the school by category.
