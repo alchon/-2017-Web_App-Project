@@ -1,17 +1,76 @@
-<!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>index</title>
-    <link rel="stylesheet" type="text/css" href="../css/stylesheets.css">
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <title>에리카 뭐먹지?</title>
+    <link rel="stylesheet" href="index.css">
+
 </head>
 <body>
-    <div class="banner">
-        <img src="../img/HYU_logo.png" alt="Hanyang Univ. ERICA" class="logo">
-    </div>
-    <form id="searchbox" action="">
-        <input id="search" type="text" placeholder="Type here">
-        <input id="submit" type="submit" value="Search">
-    </form>
+    <header>
+        <div class="drawer-toggle" onclick="setOpened()"><i class="ic-menu"><img src="menu.png" alt=""></i></div>
+        <form action="" method="post" class="textfield">
+            <input id="text" type="text">
+            <input id="search" type="submit" value="검색">
+        </form>
+    </header>
+
+    <nav id="drawer">
+        <ul>
+            <li><a href=""><img src = "kor.jpg">한식</a></li>
+            <li><a href=""><img src = "meal.jpg">고깃집</a></li>
+            <li><a href=""><img src = "jap.png">중식or일식</a></li>
+            <li><a href=""><img src = "desert.png">간식</a></li>
+            <li><a href=""><img src = "chicken.png">닭집</a></li>
+            <li><a href=""><img src = "pizza.jpg">면,피자,양식</a></li>
+            <li><a href=""><img src = "lunchbox.jpg">도시락집</a></li>
+        </ul>
+    </nav>
+    <div id="blocker" onclick="removeOpened()"></div>
+
+    <main>
+        <div class="map">
+            <img class="mySlides" src="map1.png">
+            <img class="mySlides" src="map2.png">
+            <img class="mySlides" src="map3.png">
+            <a class="w3-btn-floating" onclick="plusDivs(-1)">&#10094;</a>
+            <a class="w3-btn-floating" onclick="plusDivs(+1)">&#10095;</a>
+        </div>
+        <script>
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+              showDivs(slideIndex += n);
+            }
+
+            function showDivs(n) {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              if (n > x.length) {slideIndex = 1}    
+              if (n < 1) {slideIndex = x.length} ;
+              for (i = 0; i < x.length; i++) {
+                 x[i].style.display = "none";  
+              }
+              x[slideIndex-1].style.display = "block";  
+            }
+            </script>
+    </main>
+
+    <script>
+        function setOpened() {
+            var drawer = document.getElementById("drawer");
+            var blocker = document.getElementById("blocker");
+            drawer.classList.add("opened");
+            blocker.classList.add("opened");
+        }
+        function removeOpened() {
+            if(location.hash != "#drawer"){
+                var drawer = document.getElementById("drawer");
+                var blocker = document.getElementById("blocker");
+                drawer.classList.remove("opened");
+                blocker.classList.remove("opened");
+            }
+        }
+    </script>
 </body>
 </html>
