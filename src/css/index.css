@@ -55,10 +55,20 @@ header #search {
     -webkit-transition: .3s;
     transition: .3s;
     overflow: hidden;
+    color: white;
+}
+
+#drawer ul, h1 {
+    padding-left: 30px;
 }
 
 #drawer li {
     list-style-type: none;
+    line-height: 50px;
+}
+#drawer li a {
+    color: white;
+    text-decoration: none;
 }
 
 #drawer.opened {
@@ -82,13 +92,19 @@ header #search {
     display: block;
 }
 
-.drawer-toggle {
+#drawer-toggle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
     width: 56px;
     height: 56px;
     color: #FFFFFF;
 }
-
+.map svg {
+    width: 60%;
+    margin: 0 auto;
+}
 .map {
-    text-align: center;
-    margin-top: 2%;
+    display: flex;
+    align-items: center;
 }

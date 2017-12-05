@@ -2,11 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <title>에리카 뭐먹지?</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prototype/1.7.3/prototype.js"></script>
     <link rel="stylesheet" href="../css/index.css">
+    <script src="../js/index.js"></script>
 </head>
 <body>
     <header>
-        <div class="drawer-toggle" onclick="setOpened()"><i class="ic-menu"><img src="http://placehold.it/56x56" alt=""></i></div>
+        <div id="drawer-toggle"><span>MENU</span></div>
         <form action="" method="post" class="textfield">
             <input id="text" type="text">
             <input id="search" type="submit" value="">
@@ -14,14 +16,23 @@
     </header>
 
     <nav id="drawer">
+        <h1>MENU</h1>
         <ul>
             <li><a href="">한식</a></li>
-            <li><a href="">고깃집</a></li>
             <li><a href="">중식</a></li>
             <li><a href="">분식</a></li>
+            <li><a href="">야식</a></li>
+            <li>
+                뭐먹지?
+                <ul>
+                    <li><a href="">사다리 타기</a></li>
+                    <li><a href="">제비뽑기</a></li>
+                    <li><a href="">음식 월드컵</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
-    <div id="blocker" onclick="removeOpened()"></div>
+    <div id="blocker"></div>
 
     <main>
         <div class="map">
@@ -208,22 +219,5 @@
 
         </div>
     </main>
-
-    <script>
-        function setOpened() {
-            var drawer = document.getElementById("drawer");
-            var blocker = document.getElementById("blocker");
-            drawer.classList.add("opened");
-            blocker.classList.add("opened");
-        }
-        function removeOpened() {
-            if(location.hash != "#drawer"){
-                var drawer = document.getElementById("drawer");
-                var blocker = document.getElementById("blocker");
-                drawer.classList.remove("opened");
-                blocker.classList.remove("opened");
-            }
-        }
-    </script>
 </body>
 </html>
