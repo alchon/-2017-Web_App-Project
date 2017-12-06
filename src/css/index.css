@@ -58,12 +58,16 @@ header #search {
     color: white;
 }
 
+#drawer h1 {
+    padding-left: 20px;
+}
+
 #drawer ul {
     padding-left: 0px;
 }
 
 #drawer li {
-    padding: 0 20px;
+    padding: 0 30px;
     list-style-type: none;
     line-height: 50px;
 }
