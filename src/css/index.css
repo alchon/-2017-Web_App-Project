@@ -58,14 +58,24 @@ header #search {
     color: white;
 }
 
-#drawer ul, h1 {
-    padding-left: 30px;
+#drawer ul {
+    padding-left: 0px;
 }
 
 #drawer li {
+    padding: 0 20px;
     list-style-type: none;
     line-height: 50px;
 }
+
+#drawer li:hover {
+    /* list-style-type: none;
+    line-height: 50px;
+     */
+    border-radius: 5px;
+    background-color: rgba(255,255,255,.2);
+}
+
 #drawer li a {
     color: white;
     text-decoration: none;
@@ -94,12 +104,40 @@ header #search {
 
 #drawer-toggle {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 10px;
+    left: 10px;
     width: 56px;
     height: 56px;
     color: #FFFFFF;
 }
+
+#drawer-toggle span {
+    position: absolute;
+    left: 15%;
+    width: 70%;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+#drawer-toggle,
+#drawer-toggle span {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+#drawer-toggle span:nth-of-type(1) {
+    top: 20%;
+}
+
+#drawer-toggle span:nth-of-type(2) {
+    top: 46%;
+}
+
+#drawer-toggle span:nth-of-type(3) {
+    bottom: 20%;
+}
+
 .map svg {
     width: 60%;
     margin: 0 auto;
@@ -107,4 +145,15 @@ header #search {
 .map {
     display: flex;
     align-items: center;
+}
+
+#popup {
+    display: none;
+    z-index: 999;
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    background-color: white;
+    border: solid 1px;
 }
