@@ -85,8 +85,10 @@ main {
 }
 
 #drawer li a {
+    display: inline-block;
     color: white;
     text-decoration: none;
+    width: 100%;
 }
 
 #drawer.opened {
