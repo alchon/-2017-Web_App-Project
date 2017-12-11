@@ -63,10 +63,54 @@ function popupRefresh(x, y) {
     });
 }
 
+function wrapWindowByMask() {
+    // 화면의 높이와 너비
+    var maskHeight = $(document).height();
+    var maskWidth = $(window).width();
+    // 마스크의 높이와 너비를 화면의 높이와 너비로 설정
+    $('.mask').css({'width':maskWidth, 'height':maskHeight});
+    // fade 애니메이션 : 80%의 불투명으로 변함
+    $('.mask').fadeTo("slow", 0.8);
+    // 레이어 팝업을 가운데로 띄우기
+    var left = ($(window).scrollLeft()+($(window).width()-$('.window').width())/2);
+    var top = ($(window).scrollTop()+($(window).height()-$('.window').height())/2);
+    // css 스타일 변경
+    $('.window').css({'left':left, 'top':top, 'position':'absolute'});
+    // 레이어 팝업 띄우기
+    $('.window').show();
+}
+
 window.onload = () => {
     $("drawer-toggle").onclick = setOpened;
     $("blocker").onclick = removeOpened;
     
+
+    // 12/12일 오전 1시에 하다맘
+
+    // $('.showMask').click(function(e){
+    //     // preventDefault는 href의 링크 기본 행동을 막는 기능입니다.
+    //     e.preventDefault();
+    //     wrapWindowByMask();
+    // });
+    
+    $$('.showMask')[0].onclick = function(e) {
+        // preventDefault는 href의 링크 기본 행동을 막는 기능입니다.
+        e.preventDefault();
+        wrapWindowByMask();
+    }
+
+    // 닫기(close)를 눌렀을 때 작동합니다.
+    $$('.window .close')[0].onclick = function (e) {
+        e.preventDefault();
+        $$('.mask, .window')[0].hide();
+    };
+
+    // 뒤 검은 마스크를 클릭시에도 모두 제거하도록 처리합니다.
+    $('.mask').click(function () {
+        $(this).hide();
+        $('.window').hide();
+    });
+
     var boxes = $$(".box");
     for (var i = 0; i < boxes.length; i++) {
         boxes[i].onmousemove = (event) => {
