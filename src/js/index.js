@@ -28,12 +28,10 @@ function getStore(event) {
     });
 }
 
-function loadStore(ajax) {
+function loadStore(store) {
     while ($("popup").firstChild){
         $("popup").removeChild($("popup").firstChild);
     }
-
-    var store = JSON.parse(ajax.responseText);
 
     var title = document.createElement("h1");
     title.innerText = store.title;
@@ -43,6 +41,10 @@ function loadStore(ajax) {
     
     $("popup").appendChild(title);
     $("popup").appendChild(category);
+
+    $("popup").setStyle({
+        display: "block"
+    });
 }
 
 function ajaxFailed(ajax, exception) {
@@ -117,19 +119,15 @@ window.onload = () => {
             var x = event.pageX - 100;
             var y = event.pageY - 60;
             popupRefresh(x,y);
-            // popup(event.pageX, event.pageY);
         }
         boxes[i].onmouseover = (event) => {
             var store = getStore(event);
-            
-            $("popup").setStyle({
-                display: "block"
-            });
+            loadStore(store);
         };
         boxes[i].onmouseout = () => {
               $("popup").setStyle({
                 display: "none"
-            });  
+            });
         }
     }
 }
