@@ -4,25 +4,19 @@ let x = -1
 let y = -1
 let is_started = false
 window.onload = () => {
-    $('start').onclick = (e) => {
-        new Ajax.Request("/api/restaruants/id",{
-            method: "GET",
-            onSuccess: (ajax) => {
-                var stores = JSON.parse(ajax.responseText)
-               
-                initiate(stores)
-            },
-            onFailure: ajaxFailed,
-            onException: ajaxFailed
-        })
-    }
+    $('start').onclick = initiate
 }
 
-function initiate(stores) {
+function initiate() {
     total_candidates = []
     chosen = []
-    console.log(stores)
-    while(total_candidates.length < 16) total_candidates.push(stores.splice(Math.floor(Math.random() * stores.length)))
+    while(total_candidates.length < 16) {
+        let i = -1
+        do {
+            i = Math.floor(Math.random() * 85) + 1
+        } while(total_candidates.indexOf(i) == -1)
+        total_candidates.push(i)
+    } 
     console.log(total_candidates)
     $('start').innerText = 'Restart'
     $('left').onclick = () => choose('x')
