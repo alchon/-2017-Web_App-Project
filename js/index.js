@@ -211,7 +211,7 @@ function event_handling() {
     var boxes = $$(".box");
     for (var i = 0; i < boxes.length; i++) {
         boxes[i].onmousemove = (event) => {
-            var x = event.pageX - 100;
+            var x = event.pageX - event.currentTarget.offsetWidth/2;
             var y = event.pageY - 60;
             popupRefresh(x,y);
         }
