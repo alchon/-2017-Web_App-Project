@@ -18,7 +18,7 @@
         function search($args) {
             require __DIR__ . '/api/restaruants/search.php';
         }
-        function search($args) {
+        function getIds($args) {
             require __DIR__ . '/api/restaruants/getIds.php';
         }
     }
