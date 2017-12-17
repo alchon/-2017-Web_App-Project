@@ -21,7 +21,7 @@ Our project informs about restaurants.
 - Search restaurants based on name or category.  
 - Find nearby restaurants based on my location.  
 - Find restaurants based on category.  
-- You can get recommended restaurants by lottery.  
+- You can get recommended restaurants by drawing lots.  
 - Restaurants world cup.  
 
 ## Execute  
