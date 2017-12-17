@@ -75,16 +75,6 @@ span#phone {
     float : right;
     padding-right : 7%;
 }
-#more{
-    font-size: 12pt;
-    margin-left : 35%;
-    margin-bottom: 0%;
-    border : none;
-    width : 30%;
-    height : 30px;
-    background-color : #CCC;
-    color : white;
-}
 p {
     padding: 0;
 }
