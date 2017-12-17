@@ -7,13 +7,13 @@
 
     class API {
         function getAll() {
-            require __DIR__ . '/api/restaruants/getAll.php';
+            require __DIR__ . '/api/restaurants/getAll.php';
         }
         function getOne($args) {
-            require __DIR__ . '/api/restaruants/getOne.php';
+            require __DIR__ . '/api/restaurants/getOne.php';
         }
         function getNearby($args) {
-            require __DIR__ . '/api/restaruants/getNearby.php';
+            require __DIR__ . '/api/restaurants/getNearby.php';
         }
     }
 
@@ -24,16 +24,16 @@
 
     $router = new AltoRouter();
 
-    $router->setBasePath('/ERICA_restaruant/php');
+    $router->setBasePath('/ERICA_restaurant/php');
 
     $router->map('GET', '/', 'View#getIndex');
-    $router->map('GET', '/api/restaruants/', 'API#getAll');
-    $router->map('GET', '/api/restaruants/[i:id]', 'API#getOne');
-    $router->map('GET', '/api/restaruants/nearby', 'API#getNearby');
+    $router->map('GET', '/api/restaurants/', 'API#getAll');
+    $router->map('GET', '/api/restaurants/[i:id]', 'API#getOne');
+    $router->map('GET', '/api/restaurants/nearby', 'API#getNearby');
 
     // match current request url
     $match = $router->match();
-    
+
     // call closure or throw 404 status
     if($match && is_callable(explode('#', $match['target']))) {
         list($controller, $action) = explode('#', $match['target']);
