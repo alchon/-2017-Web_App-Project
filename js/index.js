@@ -133,6 +133,7 @@ function successSearch(ajax) {
         card.appendChild(info);
         container.appendChild(card);
     }
+    $$("main")[0].appendChild(container);
 }
 
 var stores;
