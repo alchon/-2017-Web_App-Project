@@ -5,13 +5,11 @@ let y = -1
 let is_started = false
 window.onload = () => {
     $('start').onclick = (e) => {
-        new Ajax.Request("/api/restaruants/",{
+        new Ajax.Request("/api/restaruants/id",{
             method: "GET",
             onSuccess: (ajax) => {
-                var tmp = JSON.parse(ajax.responseText)
-                let stores = []
-                for(var i = 0; i < tmp.length; i++)
-                    stores.push(tmp[i].ID)
+                var stores = JSON.parse(ajax.responseText)
+               
                 initiate(stores)
             },
             onFailure: ajaxFailed,
