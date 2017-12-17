@@ -21,26 +21,29 @@ function initiate() {
     $('left').onclick = () => choose('x')
     $('right').onclick = () => choose('y')
     add_candidate()
-    is_started = true;
+    $('round').innerText = '16강'
+    is_started = true
 }
 
 function add_candidate() {
-    if(total_candidates.length > 4) {
-        $('round').innerText = total_candidates.length + "강";
-    }
-    else if(total_candidates.length == 4) {
-        $('round').innerText = "준결승";
-    }
-    else {
-        $('round').innerText = "결승";
-    }
+    // if(total_candidates.length > 8) {
+    //     $('round').innerText = "16강";
+    // }
+    // else if(total_candidates.length)
+    // else if(total_candidates.length == 4) {
+    //     $('round').innerText = "준결승";
+    // }
+    // else {
+    //     $('round').innerText = "결승";
+    // }
     if(total_candidates.length == 0) {
         total_candidates = chosen
         chosen = []
         if(total_candidates.length == 1) {
             finalize()
             return
-        }
+        } 
+        $('round').innerText = total_candidates.length + '강'
     }
     x = Math.floor(Math.random() * total_candidates.length)
     do {
