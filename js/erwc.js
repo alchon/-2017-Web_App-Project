@@ -3,6 +3,9 @@ let chosen = null
 let x = -1
 let y = -1
 let is_started = false
+var p = document.createElement("p");
+var p_left = document.createElement("p");
+var p_right = document.createElement("p");
 window.onload = () => {
     $('start').onclick = initiate
 }
@@ -21,7 +24,7 @@ function initiate() {
     $('left').onclick = () => choose('x')
     $('right').onclick = () => choose('y')
     add_candidate()
-    var p = document.createElement("p");
+    // var p = document.createElement("p");
     p.innerText = '16강';
     document.querySelector("#round").appendChild(p);
     // $('round').innerText = '16강'
@@ -36,9 +39,8 @@ function add_candidate() {
             finalize()
             return
         } 
-        var p = document.createElement("p");
         p.innerText = ((total_candidates.length == 2) ? '결승' : (total_candidates.length + '강'));
-        document.querySelector("#round").appendChild(p);
+        // document.querySelector("#round").appendChild(p);
         // $('round').innerText = ((total_candidates.length == 2) ? '결승' : (total_candidates.length + '강'))
     }
     x = Math.floor(Math.random() * total_candidates.length)
@@ -50,10 +52,10 @@ function add_candidate() {
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
             // console.log(store)
-            var p = document.createElement("p");
+            // var p = document.createElement("p");
             // p.setAttribute("id", "left_name");
-            p.innerText = store.store.name;
-            document.querySelector("#left").appendChild(p);
+            p_left.innerText = store.store.name;
+            document.querySelector("#left").appendChild(p_left);
             // $('left').innerText = store.store.name
         }
     })
@@ -62,9 +64,9 @@ function add_candidate() {
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
             // console.log(store)
-            var p = document.createElement("p");
-            p.innerText = store.store.name;
-            document.querySelector("#right").appendChild(p);
+            // var p = document.createElement("p");
+            p_right.innerText = store.store.name;
+            document.querySelector("#right").appendChild(p_right);
             // $('right').innerText = store.store.name
         }
     })
