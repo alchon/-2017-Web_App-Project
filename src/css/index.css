@@ -22,8 +22,6 @@ main {
 }
 
 .textfield {
-    display: flex;
-    align-items: center;
     margin: auto auto;
     width: 420px;
     height: 30%;
@@ -31,19 +29,37 @@ main {
     padding: 8px;
 }
 
+.fieldset {
+    width: 87%;
+    display: flex;
+    align-items: center;
+    float: left;
+}
+
 #text {
     border: none;
     width: 80%;
-    height: 96%;
+    height:98%;
     font-size: 100%;
     padding: 12px;
 }
 
 #search {
     background-color: darkgray;
+    color: white;
     width: 20%;
-    height: 96%;
+    height: 98%;
     margin-left: 2%;
+    border: none;
+    border-radius: 0 0;
+}
+
+#geolocation {
+    margin-left: 2%;
+    width: 11%;
+    height: 98%;
+    color: white;
+    background-color: darkgray;
     border: none;
     border-radius: 0 0;
 }
@@ -170,20 +186,11 @@ main {
     padding: 0;
 }
 
-.drawer-toggle * {
-    width: 56px;
-    height: 56px;
-    color: #FFFFFF;
-    background-color: white;
-}
 .map {
     text-align: center;
     margin-top: 2%;
-
 }
-.mySlides{
-    margin-left : auto;
-    margin-right: auto;
-    width: 800px;
-    height: 800px;
+
+rect.selected { 
+    fill: #F31208;
 }

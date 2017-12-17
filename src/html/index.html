@@ -2,14 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <title>에리카 뭐먹지?</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prototype/1.7.3/prototype.js"></script>
+    <script src="../js/prototype.js"></script>
     <link rel="stylesheet" href="../css/index.css">
     <script src="../js/index.js"></script>
-    <style>
-        rect.selected { 
-            fill: #F31208;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -19,13 +14,10 @@
             <span></span>
         </div>
         <div class="textfield">
-            <form action="" method="post">
-                <input id="text" type="text">
-                <input class="search" type="submit" value="">
-            </form>
-            <button class="search" id="geolocation">fdfs</button>    
+            <form class="fieldset" action=""><input id="text" type="text">
+            <input id="search" type="submit" value="검색"></form>
+            <button id="geolocation">위치</button>
         </div>
-                
     </header>
 
     <nav id="drawer">
