@@ -320,26 +320,26 @@ function function_name(id) {
                 divs.appendChild(hr);
             }
 
-            $("body").appendChild(divs);
+            $$(".body")[0].appendChild(divs);
 
-            // var form = document.createElement("form");
-            // var username = document.createElement("input");
-            // username.setAttribute("type", "text");
-            // username.setAttribute("name", "username");
-            // username.setAttribute("id", "username");
-            // var password = document.createElement("input");
-            // password.setAttribute("type", "password");
-            // password.setAttribute("name", "password");
-            // password.setAttribute("id", "password");
-            // var contents = document.createElement("textarea");
-            // contents.setAttribute("name", "contents");
-            // contents.setAttribute("id", "contents");
+            var form = document.createElement("form");
+            var username = document.createElement("input");
+            username.setAttribute("type", "text");
+            username.setAttribute("name", "username");
+            username.setAttribute("id", "username");
+            var password = document.createElement("input");
+            password.setAttribute("type", "password");
+            password.setAttribute("name", "password");
+            password.setAttribute("id", "password");
+            var contents = document.createElement("textarea");
+            contents.setAttribute("name", "contents");
+            contents.setAttribute("id", "contents");
 
-            // form.appendChild(username);
-            // form.appendChild(password);
-            // form.appendChild(contents);
+            form.appendChild(username);
+            form.appendChild(password);
+            form.appendChild(contents);
 
-            // $("body").appendChild(form);
+            $$(".body")[0].appendChild(form);
         },
         onFailure: ajaxFailed,
         onException: ajaxFailed
