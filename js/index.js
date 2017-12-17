@@ -291,7 +291,7 @@ function moveStore(ajax) {
 }
 
 function function_name(id) {
-    new Ajax.Request("/api//replys/" + id, {
+    new Ajax.Request("/api/replys/" + id, {
         method: "GET",
         onSuccess: (ajax) => {
             var replys = JSON.parse(ajax.responseText);
