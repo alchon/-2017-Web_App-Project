@@ -25,13 +25,13 @@ function initiate() {
 }
 
 function add_candidate() {
-    if(chosen.length == total_candidates.length) {
+    if(total_candidates.length == 0) {
         total_candidates = chosen
         chosen = []
-    }
-    if(total_candidates.length == 1) {
-        finalize()
-        return
+        if(total_candidates.length == 1) {
+            finalize()
+            return
+        }
     }
     x = Math.floor(Math.random() * total_candidates.length)
     do {
