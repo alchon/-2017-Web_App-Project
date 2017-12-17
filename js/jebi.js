@@ -15,7 +15,6 @@ window.onload = () => {
         onFailure: ajaxFailed,
         onException: ajaxFailed
     })
-    console.log(names[0]);
 }
 
 function jebiClick() {
