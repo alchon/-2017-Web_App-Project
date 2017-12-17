@@ -59,8 +59,8 @@ function choose(a) {
     if(is_started) {
         const win = ((a == 'x') ? x : y)
         const lose = ((a == 'x') ? y : x)
-        console.log(total_candidates[win])
-        console.log(total_candidates[lose])
+        console.log(win + ' ' + total_candidates[win])
+        console.log(lose + ' ' + total_candidates[lose])
         chosen.push(total_candidates.splice(win, 1)[0])
         total_candidates.splice(lose, 1)
         console.log(chosen)
