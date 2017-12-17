@@ -104,8 +104,14 @@ window.onload = () => {
 
     $("jebi").onclick = jebi;
 
-    $$("form").onSubmit = () => {
-        
+    $$("form")[0].onSubmit = () => {
+        new Ajax.Request("/api/restaruants/search",{
+            method: "GET",
+            parameters: {query: $("text").value},
+            onSuccess: successSearch,
+            onFailure: ajaxFailed,
+            onException: ajaxFailed
+        });
     }
 
     var stores;
