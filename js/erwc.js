@@ -92,7 +92,7 @@ function finalize() {
         method: 'GET', 
         onSuccess: (ajax) => {
             // $('round').innerText = JSON.parse(ajax.responseText).store.name
-            alert('야호 오늘은 ' + JSON.parse(ajax.responseText).store.name) + '이닭!';
+            alert('야호 오늘은 ' + JSON.parse(ajax.responseText).store.name);
         }
     })
 }
