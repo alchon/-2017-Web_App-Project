@@ -213,6 +213,8 @@ function moveStore(ajax) {
     var menu = info.menu;
     removeElements();
 
+    console.log(info);
+
     var body = document.createElement("div");
     body.setAttribute("class", "body");
 
@@ -318,6 +320,9 @@ function event_handling() {
             });
         }
         boxes[i].onclick = (event) => {
+            $("popup").setStyle({
+                display: "none"
+            });
             var id = event.target.getAttribute("id").substring(1);
             new Ajax.Request("/api/restaruants/",{
                 method: "GET",
