@@ -25,6 +25,7 @@ function pick() {
     for(var i=0; i<16; i++) {
         while(true) {
             var index = Math.floor(Math.random()*(names.length));
+            console.log(2);
             if(check.indexOf(index) == -1) {
                 console.log(1);
                 check.push(index);
