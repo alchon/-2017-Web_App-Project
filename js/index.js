@@ -217,9 +217,9 @@ function event_handling() {
             popupRefresh(x,y);
         }
         boxes[i].onmouseover = (event) => {
-            console.log(stores);
             var id = event.target.getAttribute("id");
-            loadStore(stores[parseInt(id.slice(1))]);
+            console.log(id);
+            // loadStore(stores);
         };
         boxes[i].onmouseout = () => {
               $("popup").setStyle({
