@@ -1,7 +1,7 @@
 <?php
     include __DIR__ . '/../../include/core.php';
     $result = array();
-    $rows = $db->query('SELECT * FROM store');
+    $rows = $db->query('SELECT * FROM store NATURAL JOIN store_html');
 
     header('Content-Type: application/json');
     
@@ -17,8 +17,14 @@
             'lat' => $row['lat'], 
             'lng' => $row['lng'], 
             'x' => $row['x'], 
-            'y' => $row['y']
+            'y' => $row['y'],
+            'is_rotated' => false
         );
+        if($row['rotate_x'] != null) {
+            $pushRow['is_rotated'] = true;
+            $pushRow['rx'] = $row['rotate_x'];
+            $pushRow['ry'] = $row['rotate_y'];
+        }
         array_push($result, $pushRow);
     }
 ?>

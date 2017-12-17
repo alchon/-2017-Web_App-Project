@@ -61,19 +61,82 @@ function jebi() {
     return false;
 }
 
+function getGeoLocation() {
+    if('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition((success) => {
+            console.log(success);
+            new Ajax.Request("/ERICA_restaruant/php/api/restaruants/nearby",  {
+                method: "GET", 
+                parameters: {
+                    lat: success.coords.latitude,
+                    lng: success.coords.longitude
+                },
+                onSuccess: (ajax) => {
+                    console.log(ajax.responseText);
+                    const restaruants = JSON.parse(ajax.responseText);
+                    const rects = $$('rect.box');
+                    for(var i = 0; i < rects.length; i++) {
+                        var item = rects[i];
+                        console.log(item.id);
+                        if(restaruants.indexOf(item.id.substring(1)) != -1) {
+                            document.getElementById(item.id).classList.add('selected');                            
+                        } else {
+                            document.getElementById(item.id).classList.remove('selected');                                                        
+                        }
+                    }
+                    var element = document.querySelector("svg#layer_1");
+                    var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
+                    element.innerHTML = ''
+                    element.innerHTML = newHTML
+                },
+                onFailure: ajaxFailed,
+                onException: ajaxFailed
+            }
+        );
+        }, (failure) => {  
+            console.error(failure);
+        })
+    } else {
+        alert('지오로케이션이 지원되지 않는 환경입니다.');
+        return;
+    }
+}
+
 window.onload = () => {
     $("drawer-toggle").onclick = setOpened;
     $("blocker").onclick = removeOpened;
+    $("geolocation").onclick = getGeoLocation;
 
     $("jebi").onclick = jebi;
 
     var stores;
 
-    new Ajax.Request("url",
+    new Ajax.Request("/ERICA_restaruant/php/api/restaruants/",
     {
         method: "get",
         onSuccess: (ajax) => {
             stores = JSON.parse(ajax.responseText);
+            for(var i = 0; i < stores.length; i++) {
+                var item = stores[i];
+                const rect = document.createElement('rect');
+                rect.setAttribute('x', item.x);
+                rect.setAttribute('y', item.y);
+                rect.setAttribute('fill', "#878787");
+                rect.setAttribute('stroke', "#000000");
+                rect.setAttribute('stroke-miterlimit', "10");
+                rect.setAttribute('width', "18");
+                rect.setAttribute('height', "18");
+                if(item.is_rotated) {
+                    rect.setAttribute('transform', 'matrix(0.7071 -0.7071 0.7071 0.7071 '+ item.rx +' '+ item.ry +')')
+                }
+                rect.classList.add('box');
+                rect.id = ('b' + item.ID);
+                document.querySelector('svg#layer_1').appendChild(rect);
+            }
+            var element = document.querySelector("svg#layer_1");
+            var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
+            element.innerHTML = ''
+            element.innerHTML = newHTML
         },
         onFailure: ajaxFailed,
         onException: ajaxFailed
