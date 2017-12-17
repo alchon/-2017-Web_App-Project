@@ -21,7 +21,10 @@ function initiate() {
     $('left').onclick = () => choose('x')
     $('right').onclick = () => choose('y')
     add_candidate()
-    $('round').innerText = '16강'
+    var p = document.createElement("p");
+    p.innerText = '16강';
+    document.querySelector("#round").appendChild(p);
+    // $('round').innerText = '16강'
     is_started = true
 }
 

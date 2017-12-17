@@ -4,6 +4,9 @@
     border: 1px solid black;
     margin: auto;
     margin-bottom: 10px;
+    font-size: 40pt;
+    display: flex;
+    text-align: center;
 }
 
 #left {
@@ -13,7 +16,9 @@
     background-color: darkgray;
     margin-right: 10px;
     border: 1px solid black;
-    font-size: 50pt;
+    font-size: 40pt;
+    display: flex;
+    align-items: center;
 }
 #right {
     width: 280px;
@@ -21,6 +26,9 @@
     float: right;
     background-color: darkgray;
     border: 1px solid black;
+    font-size: 40pt;
+    display: flex;
+    align-items: center;
 }
 #start {
     width: 50px;
