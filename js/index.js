@@ -256,47 +256,47 @@ function moveStore(ajax) {
     body.appendChild(menu);
     body.appendChild(hr);
 
-    var menucard = document.createElement("div");
-    menucard.setAttribute("class", "menucard");
+    // var menucard = document.createElement("div");
+    // menucard.setAttribute("class", "menucard");
 
-    var menu_name = document.createElement("span");
-    menu_name.setAttribute("class", "menu_name");
-    menu_name.innerText = menu[0].name;
+    // var menu_name = document.createElement("span");
+    // menu_name.setAttribute("class", "menu_name");
+    // menu_name.innerText = menu[0].name;
 
-    var menu_price = document.createElement("span");
-    menu_price.setAttribute("class", "menu_price");
-    menu_price.innerText = menu[0].price;
+    // var menu_price = document.createElement("span");
+    // menu_price.setAttribute("class", "menu_price");
+    // menu_price.innerText = menu[0].price;
 
-    var card_hr = document.createElement("hr");
-    card_hr.setAttribute("class", "card-hr");
+    // var card_hr = document.createElement("hr");
+    // card_hr.setAttribute("class", "card-hr");
 
-    menucard.appendChild(menu_name);
-    menucard.appendChild(menu_price);
+    // menucard.appendChild(menu_name);
+    // menucard.appendChild(menu_price);
 
-    body.appendChild(menucard);
+    // body.appendChild(menucard);
 
-    var j = 1;
+    // var j = 1;
 
-    for (var i = j; i < j+4 && i < menu.length; i++) {
-        var menucard = document.createElement("div");
-        menucard.setAttribute("class", "menucard");
+    // for (var i = j; i < j+4 && i < menu.length; i++) {
+    //     var menucard = document.createElement("div");
+    //     menucard.setAttribute("class", "menucard");
 
-        var menu_name = document.createElement("span");
-        menu_name.setAttribute("class", "menu_name");
-        menu_name.innerText = menu[i].name;
+    //     var menu_name = document.createElement("span");
+    //     menu_name.setAttribute("class", "menu_name");
+    //     menu_name.innerText = menu[i].name;
 
-        var menu_price = document.createElement("span");
-        menu_price.setAttribute("class", "menu_price");
-        menu_price.innerText = menu[i].price;
+    //     var menu_price = document.createElement("span");
+    //     menu_price.setAttribute("class", "menu_price");
+    //     menu_price.innerText = menu[i].price;
 
-        var card_hr = document.createElement("hr");
-        card_hr.setAttribute("class", "card-hr");
+    //     var card_hr = document.createElement("hr");
+    //     card_hr.setAttribute("class", "card-hr");
 
-        menucard.appendChild(menu_name);
-        menucard.appendChild(menu_price);
+    //     menucard.appendChild(menu_name);
+    //     menucard.appendChild(menu_price);
 
-        body.appendChild(menucard);
-    }
+    //     body.appendChild(menucard);
+    // }
 
     $$("main")[0].appendChild(body);
 
