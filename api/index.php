@@ -24,19 +24,19 @@
     }
 
     class Replys {
-        function getAll() {
+        function getAll($args) {
             require __DIR__ . '/api/replys/getAll.php';
         }
-        function getOne() {
+        function getOne($args) {
             require __DIR__ . '/api/replys/getOne.php';
         }
-        function create() {
+        function create($args) {
             require __DIR__ . '/api/replys/createReply.php';
         }
-        function update() {
+        function update($args) {
             require __DIR__ . '/api/replys/editReply.php';
         }
-        function remove() {
+        function remove($args) {
             require __DIR__ . '/api/replys/deleteReply.php';
         }
         
