@@ -65,7 +65,7 @@ function getGeoLocation() {
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((success) => {
             console.log(success);
-            new Ajax.Request("http://35.203.158.60:8080/api/restaruants/nearby",  {
+            new Ajax.Request("/api/restaruants/nearby",  {
                 method: "GET", 
                 parameters: {
                     lat: success.coords.latitude,
@@ -163,9 +163,10 @@ window.onload = () => {
     $("jebi").onclick = jebi;
     $("erwc").onclick = erwc;
 
+    $
 
     $("search").onclick = () => {
-        new Ajax.Request("http://35.203.158.60:8080/api/restaruants/search",{
+        new Ajax.Request("/api/restaruants/search",{
             method: "POST",
             parameters: {query: $("text").value},
             onSuccess: successSearch,
@@ -173,7 +174,7 @@ window.onload = () => {
             onException: ajaxFailed
         });
     }
-    new Ajax.Request("http://35.203.158.60:8080/api/restaruants/",
+    new Ajax.Request("/api/restaruants/",
     {
         method: "get",
         onSuccess: (ajax) => {

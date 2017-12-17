@@ -4,7 +4,7 @@ window.onload = () => {
     $('out').onclick = outClick;
     $('more').onclick = moreClick;
     $('img').onclick = jebiClick;
-    new Ajax.Request("http://35.203.158.60:8080/api/restaruants/", {
+    new Ajax.Request("/api/restaruants/", {
         method: "get",
         onSuccess : (ajax) => {
             var data = JSON.parse(ajax.responseText);
