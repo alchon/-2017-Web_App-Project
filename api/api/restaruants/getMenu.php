@@ -12,6 +12,7 @@
         if(!is_numeric($k))
             $result['store'][$k] = $v;
     }
+    print_r($menus);
     foreach($menus as $menu) {
         $pushMenu = array(
             'name' => $menu['name'],
@@ -20,6 +21,6 @@
         );
         array_push($result['menus'], $pushMenu);
     }
-    echo json_encode($result);
+    // echo json_encode($result);
 ?>
  
