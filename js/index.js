@@ -135,6 +135,8 @@ function successSearch(ajax) {
     }
 }
 
+var stores;
+
 window.onload = () => {
     $("drawer-toggle").onclick = setOpened;
     $("blocker").onclick = removeOpened;
@@ -143,7 +145,8 @@ window.onload = () => {
     $("jebi").onclick = jebi;
     $("erwc").onclick = erwc;
 
-    $$("form")[0].onSubmit = () => {
+
+    $("search").onclick = () => {
         new Ajax.Request("http://35.203.158.60:8080/api/restaruants/search",{
             method: "GET",
             parameters: {query: $("text").value},
@@ -152,9 +155,6 @@ window.onload = () => {
             onException: ajaxFailed
         });
     }
-
-    var stores;
-
     new Ajax.Request("http://35.203.158.60:8080/api/restaruants/",
     {
         method: "get",
