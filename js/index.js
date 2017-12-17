@@ -329,6 +329,7 @@ function function_name(id) {
             $$(".body")[0].appendChild(comments);
             var hr = document.createElement("hr");
             hr.setAttribute("class", "menu-hr");
+            $$(".body")[0].appendChild(hr);
 
             var form = document.createElement("form");
             var username = document.createElement("input");
