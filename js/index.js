@@ -231,12 +231,16 @@ function moveStore(ajax) {
     var txt = document.createElement("div");
     txt.setAttribute("class", "txt");
     var original = document.createElement("p");
+    original.setAttribute("id", "original");
     original.innerText = store.branch + " > " + store.sub_branch;
     var r_name = document.createElement("p");
+    r_name.setAttribute("id", "r_name");
     r_name.innerText = store.name;
     var add = document.createElement("p");
+    add.setAttribute("id", "add");
     add.innerText = store.address_1;
     var phone = document.createElement("p");
+    phone.setAttribute("id", "phone");
     phone.innerText = store.tel;
 
     var menu = document.createElement("p");
