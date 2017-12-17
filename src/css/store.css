@@ -1,8 +1,8 @@
-.body {
+.body1 {
     width: 80%;
     margin: 0 auto;
 }
-.main {
+.main1 {
     width: 40%;
     float: left;
     margin-right: 15%;
@@ -26,7 +26,7 @@ h1 {
     margin-right: 4%;
     width: 20%
 }
-.header {
+.header1 {
     overflow: hidden;
 }
 .menu_name {

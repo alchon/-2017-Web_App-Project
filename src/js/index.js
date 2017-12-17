@@ -102,6 +102,39 @@ function getGeoLocation() {
     }
 }
 
+function removeElements() {
+    while ($$("main")[0].firstChild){
+        $$("main")[0].removeChild($$("main")[0].firstChild);
+    }
+}
+
+function successSearch(ajax) {
+    removeElements();
+    var result = JSON.parse(ajax.responseText);
+    var container = document.createElement("div");
+    container.addClassName("container");
+    var h1 = document.createElement("h1");
+    h1.innerText = "검색결과 : " + result.length + "건";
+    container.appendChild(h1);
+    for (var i = 0; i < result.length; i++) {
+        var card = document.createElement("div");
+        card.addClassName("card");
+        var img = document.createElement("img");
+        img.setAttribute("src", "http://placehold.it/360x360");
+        card.appendChild(img);
+        card.appendChild(document.createElement("hr"));
+        var info = document.createElement("div");
+        var title = document.createElement("h1");
+        title.innerText = result[i].name;
+        var address = document.createElement("p");
+        address.innerText = result[i].address;
+        info.appendChild(title);
+        info.appendChild(address);
+        card.appendChild(info);
+        container.appendChild(card);
+    }
+}
+
 window.onload = () => {
     $("drawer-toggle").onclick = setOpened;
     $("blocker").onclick = removeOpened;

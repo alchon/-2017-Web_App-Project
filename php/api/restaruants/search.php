@@ -5,7 +5,7 @@
     header('Content-Type: application/json');
 
     foreach($rows as $row) {
-        $result[] = $row['ID'];
+        $result[] = array('ID' => $row['ID'], 'name' => $row['name'], 'address' => $row['address_1']);
     }
 ?>
 <? echo json_encode($result) ?>
