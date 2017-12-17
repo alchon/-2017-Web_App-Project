@@ -296,7 +296,7 @@ function function_name(id) {
         onSuccess: (ajax) => {
             var replys = JSON.parse(ajax.responseText);
             var divs = document.createElement("div");
-            divs.setAttribute("class" "replys");
+            divs.setAttribute("class", "replys");
             for (var i = 0; i < replys.length; i++) {
                 var div = document.createElement("div");
                 div.setAttribute("class" "reply");
