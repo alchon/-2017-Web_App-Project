@@ -57,7 +57,7 @@ function jebi() {
 }
 
 function erwc() {
-    erwcWindow = window.open("erwc.html", "음식 월드컵", "width=600, height=500, top=200, left=300");
+    erwcWindow = window.open("erwc.html", "음식 월드컵", "width=600, height=700, top=200, left=300");
     return false;
 }
 
