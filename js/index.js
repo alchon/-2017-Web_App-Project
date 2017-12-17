@@ -299,7 +299,7 @@ function function_name(id) {
             divs.setAttribute("class", "replys");
             for (var i = 0; i < replys.length; i++) {
                 var div = document.createElement("div");
-                div.setAttribute("class" "reply");
+                div.setAttribute("class", "reply");
 
                 var username = document.createElement("span");
                 username.innerText = replys[i].username;
