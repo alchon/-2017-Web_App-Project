@@ -230,3 +230,94 @@ hr {
     margin: 0;
     padding: 0;
 }
+
+#picture{
+    width : 30%;
+    margin : 0;
+}
+.txt{
+    width : 70%;
+    margin-left : 450px;
+    margin-top: 40px;
+}
+.body {
+    width: 80%;
+    margin: 0 auto;
+}
+.main {
+    float: left;
+}
+.menu-hr{
+    height : 4px;
+    background-color: #ccc;
+    margin-top : 0%;
+    border : none;
+}
+#comment{
+    border : 1px solid;
+    padding : 0.5%;
+}
+.card-hr{
+    width : 85%;
+}
+#original {
+    font-size: 11pt;
+    margin-bottom : 0px;
+}
+#r_name {
+    font-size : 26pt;
+    margin-top : 15px;
+    margin-bottom: 15px;    
+}
+#menu{
+    font-size : 16pt;
+    margin-left : 7%;
+}
+
+span#add {
+    font-size: 15pt;
+    margin-top : -20px;
+    display: inline-block;
+}
+
+span#phone {
+    margin-top : 10px;
+    font-size: 16pt;
+    display : inline-block;
+}
+
+.menucard {
+    display: inline-block;
+    margin-top: 2%;
+    margin-right: 4%;
+    width: 100%;
+}
+
+.header {
+    overflow: hidden;
+    width : 90%;
+    margin : 40px auto;
+}
+.menu_name {
+    font-size: 20pt;
+    float : left;
+    padding-left : 7%;
+}
+.menu_price {
+    font-size: 15pt;
+    float : right;
+    padding-right : 7%;
+}
+#more{
+    font-size: 12pt;
+    margin-left : 35%;
+    margin-bottom: 0%;
+    border : none;
+    width : 30%;
+    height : 30px;
+    background-color : #CCC;
+    color : white;
+}
+p {
+    padding: 0;
+}

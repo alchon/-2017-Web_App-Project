@@ -207,6 +207,99 @@ window.onload = () => {
     });
 }
 
+function moveStore(ajax) {
+    var info = JSON.parse(ajax.responseText);
+    var store = info.store;
+    var menu = info.menu;
+    removeElements();
+
+    var body = document.createElement("div");
+    body.setAttribute("class", "body");
+
+    var header = document.createElement("div");
+    header.setAttribute("class", "header");
+
+    var pictrue = document.createElement("div");
+    pictrue.setAttribute("class", "pictrue");
+
+    var img = document.createElement("img");
+    img.setAttribute("src", "http://placehold.it/360x360");
+    img.setAttribute("class", "main");
+
+    var txt = document.createElement("div");
+    txt.setAttribute("class", "txt");
+    var original = document.createElement("p");
+    original.innerText = store.branch + " > " + store.sub_branch;
+    var r_name = document.createElement("p");
+    r_name.innerText = store.name;
+    var add = document.createElement("p");
+    add.innerText = store.address_1;
+    var phone = document.createElement("p");
+    phone.innerText = store.tel;
+
+    var menu = document.createElement("p");
+    menu.setAttribute("id", "menu");
+    var hr = document.createElement("hr");
+    hr.setAttribute("class", "menu-hr");
+
+    txt.appendChild(original);
+    txt.appendChild(r_name);
+    txt.appendChild(add);
+    txt.appendChild(phone);
+    pictrue.appendChild(img);
+    header.appendChild(pictrue);
+    header.appendChild(txt);
+    body.appendChild(header);
+
+    body.appendChild(menu);
+    body.appendChild(hr);
+
+    var menucard = document.createElement("div");
+    menucard.setAttribute("class", "menucard");
+
+    var menu_name = document.createElement("span");
+    menu_name.setAttribute("class", "menu_name");
+    menu_name.innerText = menu[0].name;
+
+    var menu_price = document.createElement("span");
+    menu_price.setAttribute("class", "menu_price");
+    menu_price.innerText = menu[0].price;
+
+    var card_hr = document.createElement("hr");
+    card_hr.setAttribute("class", "card-hr");
+
+    menucard.appendChild(menu_name);
+    menucard.appendChild(menu_price);
+
+    body.appendChild(menucard);
+
+    var j = 1;
+
+    for (var i = j; i < j+4 && i < menu.length; i++) {
+        var menucard = document.createElement("div");
+        menucard.setAttribute("class", "menucard");
+
+        var menu_name = document.createElement("span");
+        menu_name.setAttribute("class", "menu_name");
+        menu_name.innerText = menu[i].name;
+
+        var menu_price = document.createElement("span");
+        menu_price.setAttribute("class", "menu_price");
+        menu_price.innerText = menu[i].price;
+
+        var card_hr = document.createElement("hr");
+        card_hr.setAttribute("class", "card-hr");
+
+        menucard.appendChild(menu_name);
+        menucard.appendChild(menu_price);
+
+        body.appendChild(menucard);
+    }
+
+    $$("main")[0].appendChild(body);
+
+}
+
 function event_handling() {
     var boxes = $$(".box");
     for (var i = 0; i < boxes.length; i++) {
@@ -220,8 +313,18 @@ function event_handling() {
             loadStore(stores[id-1]);
         };
         boxes[i].onmouseout = () => {
-              $("popup").setStyle({
+            $("popup").setStyle({
                 display: "none"
+            });
+        }
+        boxes[i].onclick = (event) => {
+            var id = event.target.getAttribute("id").substring(1);
+            new Ajax.Request("/api/restaruants/",{
+                method: "GET",
+                parameters: {id: id},
+                onSuccess: moveStore,
+                onFailure: ajaxFailed,
+                onException: ajaxFailed
             });
         }
     }
