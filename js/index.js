@@ -210,7 +210,7 @@ window.onload = () => {
 function moveStore(ajax) {
     var info = JSON.parse(ajax.responseText);
     var store = info.store;
-    var menu = info.menus;
+    var menus = info.menus;
     removeElements();
 
     console.log(info);
@@ -282,21 +282,20 @@ function moveStore(ajax) {
 
     // var j = 1;
 
-    console.log(menu);
     var card_hr = document.createElement("hr");
     card_hr.setAttribute("class", "card-hr");
 
-    for (var i = 0; i < menu.length; i++) {
+    for (var i = 0; i < menus.length; i++) {
         var menucard = document.createElement("div");
         menucard.setAttribute("class", "menucard");
 
         var menu_name = document.createElement("span");
         menu_name.setAttribute("class", "menu_name");
-        menu_name.innerText = menu[i].name;
+        menu_name.innerText = menus[i].name;
 
         var menu_price = document.createElement("span");
         menu_price.setAttribute("class", "menu_price");
-        menu_price.innerText = menu[i].price;
+        menu_price.innerText = menus[i].price;
 
         menucard.appendChild(menu_name);
         menucard.appendChild(menu_price);
