@@ -59,11 +59,12 @@ function add_candidate() {
 
 function choose(a) {
     if(is_started) {
-        console.log(a)
-        console.log(x)
-        console.log(y)
-        chosen.push(total_candidates.splice(((a == 'x') ? x : y), 1)[0])
-        total_candidates.splice(((a == 'x') ? y : x), 1)
+        const win = ((a == 'x') ? x : y)
+        const lose = ((a == 'x') ? y : x)
+        console.log(win)
+        console.log(lose)
+        chosen.push(total_candidates.splice(win, 1)[0])
+        total_candidates.splice(lose, 1)
         console.log(chosen)
         console.log(total_candidates)
         add_candidate()
