@@ -48,6 +48,7 @@ function add_candidate() {
             store = JSON.parse(ajax.responseText)
             // console.log(store)
             var p = document.createElement("p");
+            p.setAttribute("id", "left_name");
             p.innerText = store.store.name;
             document.querySelector("#left").appendChild(p);
             // $('left').innerText = store.store.name
