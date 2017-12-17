@@ -58,10 +58,10 @@
     $router->map('GET', '/restaruants/nearby', 'Restaurants#getNearby');
     $router->map('POST', '/restaruants/search', 'Restaurants#search');
     $router->map('GET', '/restaruants/id', 'Restaurants#getIds');
-    $router->map('GET', '/replys/[i:store_id]', 'Replys#getAll');
     $router->map('POST', '/replys', 'Replys#create');
     $router->map('PUT', '/replys', 'Replys#update');
     $router->map('DELETE', '/replys', 'Replys#remove');
+    $router->map('GET', '/replys/[i:store_id]', 'Replys#getAll');
     $router->map('GET', '/replys/[i:store_id]/[i:id]', 'Replys#getOne');
     
     // match current request url
