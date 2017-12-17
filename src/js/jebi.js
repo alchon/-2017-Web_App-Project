@@ -1,9 +1,10 @@
-var names;
+var names = [];
+var check = 1;
 window.onload = () => {
     $('out').onclick = outClick;
     $('more').onclick = moreClick;
     $('img').onclick = jebiClick;
-    new Ajax.Request("api/restaurants", {
+    new Ajax.Request("/ERICA_restaurant/php/api/restaurants", {
         method: "get",
         onSuccess : (ajax) => {
             var data = JSON.parse(ajax.responseText);
@@ -11,64 +12,47 @@ window.onload = () => {
                 names.push(data[i].name);
             }
         },
-        onFailure: ajaxFailure,
-        onException: ajaxFailure
+        onFailure: ajaxFailed,
+        onException: ajaxFailed
     })
 }
 
 function jebiClick() {
-    $("img").addClassName("hidden");
-    ShowStores();
+    if(check) {
+        $("img").addClassName("hidden");
+        ShowStores();
+        check = 0;
+    }
     // getStores_JSON();
 }
 
 function moreClick() {
     location.reload();
+    check = 1;
 }
 
 function outClick() {
     window.close();
 }
 
-// function ShowStores() {
-//     var name = 
-// }
-
-// {
-//  "stores" : [
-//              {"title":x},
-//              {"title":y},
-//                  ...
-//  ]
-// }
-
-// function getStores_JSON() {
-//     new Ajax.Request("api/restaurants", {
-//         method: "get",
-//         onSuccess: showStores_JSON,
-//         onFailure: ajaxFailure,
-//         onException: ajaxFailure
-//     });
-// }
-
-function showStores() {
+function ShowStores() {
     var index = Math.floor(Math.random()*(names.length));
     var name = names[index];
     var p = document.createElement("p");
     var p2 = document.createElement("p");
-    p.innerHTML = name;
-    p2.innerHTML = "어떠세요??"
-    document.querySelector("#div").appendChild(p);
-    document.querySelector("p").appendChild(p2);
+    p.innerText = name;
+    p2.innerText = "어떠세요??";
+    document.querySelector("#img").appendChild(p);
+    document.querySelector("#img").appendChild(p2);
 }
 
-// function ajaxFailed(ajax, exception) {
-//     var errorMessage = "Error making Ajax request:\n\n";
-//     if (exception) {
-//         errorMessage += "Exception: " + exception.message;
-//     } else {
-//         errorMessage += "Server status:\n" + ajax.status + " " + ajax.statusText + 
-//                         "\n\nServer response text:\n" + ajax.responseText;
-//     }
-//     console.log(errorMessage);
-// }
+function ajaxFailed(ajax, exception) {
+    var errorMessage = "Error making Ajax request:\n\n";
+    if (exception) {
+        errorMessage += "Exception: " + exception.message;
+    } else {
+        errorMessage += "Server status:\n" + ajax.status + " " + ajax.statusText +
+                        "\n\nServer response text:\n" + ajax.responseText;
+    }
+    console.log(errorMessage);
+}

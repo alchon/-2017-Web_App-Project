@@ -12,21 +12,42 @@ h1 {
     height: 50px;
 
 }
+.hidden {
+    background-image: url("../img/jebi_open.png") !important;
+    margin-left: 85px !important;
+    /*background-size: auto 300px;
+    background-repeat: no-repeat;*/
+}
+
 #img {
     margin-top:20px;
     margin-bottom:20px;
     margin-left: 100px;
     height: 300px;
+    background-image: url("../img/jebi.png");
+    background-size: auto 300px;
+    background-repeat: no-repeat;
 }
+
 .btn {
     font-size: 15pt;
     width: 100px;
     height: 50px;
     margin-left: 60px;
 }
-.hidden {
-    display:none;
-}
+
 #div {
     height: 400px;
+}
+#open {
+    background-color: red;
+    height: 500px;
+    width: 500px;
+}
+p {
+    font-size: 20pt;
+    font: bold;
+    padding-top:70px;
+    margin-left: -85px;
+    text-align: center;
 }
