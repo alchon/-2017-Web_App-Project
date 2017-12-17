@@ -52,8 +52,6 @@ function pick() {
 
 function start() {
     pick();
-    $("start").addClassName("hidden");
-    $("play").removeClassName("hidden");
     console.log(wc16);
     var item = 16;
     var p_l = document.createElement("p");
@@ -66,6 +64,7 @@ function start() {
             for(var i=0; i<16; i+=2) {
                 p_l.innerText = "";
                 p_l.innerText = wc16[i];
+                console.log(wc16[i]);
                 p_r.innerText = "";
                 p_r.innerText = wc16[i+1];
                 document.querySelector("#left").appendChild(p_l);
