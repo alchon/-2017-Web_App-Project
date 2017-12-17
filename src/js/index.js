@@ -104,6 +104,10 @@ window.onload = () => {
 
     $("jebi").onclick = jebi;
 
+    $$("form").onSubmit = () => {
+        
+    }
+
     var stores;
 
     new Ajax.Request("/ERICA_restaruant/php/api/restaruants/",
