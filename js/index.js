@@ -324,9 +324,8 @@ function event_handling() {
                 display: "none"
             });
             var id = event.target.getAttribute("id").substring(1);
-            new Ajax.Request("/api/restaruants/",{
+            new Ajax.Request("/api/restaruants/" + id,{
                 method: "GET",
-                parameters: {id: id},
                 onSuccess: moveStore,
                 onFailure: ajaxFailed,
                 onException: ajaxFailed
