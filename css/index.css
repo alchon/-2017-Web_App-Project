@@ -279,15 +279,11 @@ hr {
 }
 
 #add {
-    font-size: 15pt;
-    margin-top : -20px;
-    display: inline-block;
+    font-size: 14pt;
 }
 
 #phone {
-    margin-top : 10px;
-    font-size: 16pt;
-    display : inline-block;
+    font-size: 13pt;
 }
 
 .menucard {
