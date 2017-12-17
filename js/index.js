@@ -72,12 +72,10 @@ function getGeoLocation() {
                     lng: success.coords.longitude
                 },
                 onSuccess: (ajax) => {
-                    console.log(ajax.responseText);
                     const restaruants = JSON.parse(ajax.responseText);
                     const rects = $$('rect.box');
                     for(var i = 0; i < rects.length; i++) {
                         var item = rects[i];
-                        console.log(item.id);
                         if(restaruants.indexOf(item.id.substring(1)) != -1) {
                             document.getElementById(item.id).classList.add('selected');                            
                         } else {
@@ -108,32 +106,49 @@ function removeElements() {
     }
 }
 
+// function successSearch(ajax) {
+//     removeElements();
+//     var result = JSON.parse(ajax.responseText);
+//     var container = document.createElement("div");
+//     container.addClassName("container");
+//     var h1 = document.createElement("h1");
+//     h1.innerText = "검색결과 : " + result.length + "건";
+//     container.appendChild(h1);
+//     for (var i = 0; i < result.length; i++) {
+//         var card = document.createElement("div");
+//         card.addClassName("card");
+//         var img = document.createElement("img");
+//         img.setAttribute("src", "http://placehold.it/360x360");
+//         card.appendChild(img);
+//         card.appendChild(document.createElement("hr"));
+//         var info = document.createElement("div");
+//         var title = document.createElement("h1");
+//         title.innerText = result[i].name;
+//         var address = document.createElement("p");
+//         address.innerText = result[i].address;
+//         info.appendChild(title);
+//         info.appendChild(address);
+//         card.appendChild(info);
+//         container.appendChild(card);
+//     }
+//     $$("main")[0].appendChild(container);
+// }
+
 function successSearch(ajax) {
-    removeElements();
-    var result = JSON.parse(ajax.responseText);
-    var container = document.createElement("div");
-    container.addClassName("container");
-    var h1 = document.createElement("h1");
-    h1.innerText = "검색결과 : " + result.length + "건";
-    container.appendChild(h1);
-    for (var i = 0; i < result.length; i++) {
-        var card = document.createElement("div");
-        card.addClassName("card");
-        var img = document.createElement("img");
-        img.setAttribute("src", "http://placehold.it/360x360");
-        card.appendChild(img);
-        card.appendChild(document.createElement("hr"));
-        var info = document.createElement("div");
-        var title = document.createElement("h1");
-        title.innerText = result[i].name;
-        var address = document.createElement("p");
-        address.innerText = result[i].address;
-        info.appendChild(title);
-        info.appendChild(address);
-        card.appendChild(info);
-        container.appendChild(card);
+    const restaruants = JSON.parse(ajax.responseText);
+    const rects = $$('rect.box');
+    for(var i = 0; i < rects.length; i++) {
+        var item = rects[i];
+        if(restaruants.indexOf(item.id.substring(1)) != -1) {
+            document.getElementById(item.id).classList.add('selected');
+        } else {
+            document.getElementById(item.id).classList.remove('selected');
+        }
     }
-    $$("main")[0].appendChild(container);
+    var element = document.querySelector("svg#layer_1");
+    var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
+    element.innerHTML = ''
+    element.innerHTML = newHTML
 }
 
 var stores;
