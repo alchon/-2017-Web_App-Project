@@ -15,7 +15,9 @@
         function getNearby($args) {
             require __DIR__ . '/api/restaruants/getNearby.php';
         }
-        
+        function search($args) {
+            require __DIR__ . '/api/restaruants/search.php';
+        }
     }
 
     ini_set('display_startup_errors', 1);
@@ -32,6 +34,7 @@
     $router->map('GET', '/api/restaruants/[i:id]', 'API#getOne');
     $router->map('GET', '/api/restaruants/[i:id]/menu', 'API#getMenu');
     $router->map('GET', '/api/restaruants/nearby', 'API#getNearby');
+    $router->map('POST', '/api/restaruants/search', 'API#search');
 
     // match current request url
     $match = $router->match();
