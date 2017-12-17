@@ -68,3 +68,7 @@ function choose(a) {
 function finalize() {
     alert('Winner: ' + total_candidates)
 }
+
+function ajaxFailed(ajax) {
+    console.error(ajax)
+}
