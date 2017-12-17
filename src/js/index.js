@@ -14,20 +14,6 @@ function removeOpened() {
     }
 }
 
-function getStore(event) {
-    new Ajax.Request("url",
-    {
-        method: "get",
-        parameters: {id : event.target.getAttribute("id")},
-        onSuccess: (ajax) => {
-            return JSON.parse(ajax.responseText);
-        },
-        // onSuccess: loadStore,
-        onFailure: ajaxFailed,
-        onException: ajaxFailed
-    });
-}
-
 function loadStore(store) {
     while ($("popup").firstChild){
         $("popup").removeChild($("popup").firstChild);
@@ -70,6 +56,18 @@ window.onload = () => {
     $("drawer-toggle").onclick = setOpened;
     $("blocker").onclick = removeOpened;
 
+    var stores;
+
+    new Ajax.Request("url",
+    {
+        method: "get",
+        onSuccess: (ajax) => {
+            stores = JSON.parse(ajax.responseText);
+        },
+        onFailure: ajaxFailed,
+        onException: ajaxFailed
+    });
+
     var boxes = $$(".box");
     for (var i = 0; i < boxes.length; i++) {
         boxes[i].onmousemove = (event) => {
@@ -78,11 +76,8 @@ window.onload = () => {
             popupRefresh(x,y);
         }
         boxes[i].onmouseover = (event) => {
-            // var store = getStore(event);
-            // loadStore(store);
-            $("popup").setStyle({
-                display: "block"
-            });
+            var store  = stores[event.target.getAttribute("id")];// id에 맞는 음식점
+            loadStore(store);
         };
         boxes[i].onmouseout = () => {
               $("popup").setStyle({
