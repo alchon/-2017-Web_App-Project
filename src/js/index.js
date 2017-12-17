@@ -20,10 +20,10 @@ function loadStore(store) {
     }
 
     var title = document.createElement("h1");
-    title.innerText = store.title;
+    title.innerText = store.name;
 
     var category = document.createElement("p");
-    category.innerText = store.category;
+    category.innerText = store.branch + " > " + store.sub_branch;
     
     $("popup").appendChild(title);
     $("popup").appendChild(category);
@@ -52,11 +52,6 @@ function popupRefresh(x, y) {
 }
 
 function jebi() {
-    // var x = window.innerWidth/4;
-    // var y = window.innerHeight/4;
-    // console.log(x);
-    // console.log(y);
-    // var specs = "width=400, htidht=600, top="+x+", left="+y;
     jebiWindow = window.open("jebi.html", "제비 뽑기" , "width=400, height=600, top=200, left=300");
     return false;
 }
@@ -150,8 +145,8 @@ window.onload = () => {
             popupRefresh(x,y);
         }
         boxes[i].onmouseover = (event) => {
-            var store  = stores[event.target.getAttribute("id")];// id에 맞는 음식점
-            loadStore(store);
+            var id = event.target.getAttribute("id");
+            loadStore(stores[parseInt(id.slice(1))]);
         };
         boxes[i].onmouseout = () => {
               $("popup").setStyle({
