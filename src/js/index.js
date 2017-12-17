@@ -56,6 +56,11 @@ function jebi() {
     return false;
 }
 
+function erwc() {
+    erwcWindow = window.open("erwc.html", "음식 월드컵", "width=600, height=500, top=200, left=300");
+    return false;
+}
+
 function getGeoLocation() {
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((success) => {
@@ -103,6 +108,7 @@ window.onload = () => {
     $("geolocation").onclick = getGeoLocation;
 
     $("jebi").onclick = jebi;
+    $("erwc").onclick = erwc;
 
     $$("form")[0].onSubmit = () => {
         new Ajax.Request("/api/restaruants/search",{

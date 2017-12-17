@@ -1,0 +1,27 @@
+#round {
+    width : 580px;
+    height : 100px;
+    border: 1px solid black;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+#left {
+    width: 280px;
+    height: 370px;
+    float: left;
+    background-color: darkgray;
+    padding-right: 10px;
+    border: 1px solid black
+}
+#right {
+    width: 280px;
+    height: 370px;
+    float: right;
+    background-color: darkgray;
+    border: 1px solid black;
+}
+
+.hidden {
+    display: hidden;
+}
