@@ -181,7 +181,6 @@ window.onload = () => {
             stores = JSON.parse(ajax.responseText);
             for(var i = 0; i < stores.length; i++) {
                 var item = stores[i];
-                console.log(item);
                 const rect = document.createElement('rect');
                 rect.setAttribute('x', item.x);
                 rect.setAttribute('y', item.y);
@@ -218,7 +217,7 @@ function event_handling() {
         }
         boxes[i].onmouseover = (event) => {
             var id = event.target.getAttribute("id").substring(1);
-            loadStore(stores[id]);
+            loadStore(stores[id-1]);
         };
         boxes[i].onmouseout = () => {
               $("popup").setStyle({
