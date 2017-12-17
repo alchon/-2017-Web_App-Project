@@ -319,7 +319,7 @@ function function_name(id) {
                 divs.appendChild(div);
                 divs.appendChild(hr);
             }
-            
+
             var comments = document.createElement("p");
             comments.setAttribute("id", "comments");
             comments.innerText = "COMMENTS";
@@ -343,11 +343,13 @@ function function_name(id) {
             var contents = document.createElement("textarea");
             contents.setAttribute("name", "contents");
             contents.setAttribute("id", "contents");
+            var submit = document.createElement("input");
+            submit.setAttribute("type", "submit");
 
             form.appendChild(username);
             form.appendChild(password);
             form.appendChild(contents);
-
+            form.appendChild(submit);
             $$(".body")[0].appendChild(form);
         },
         onFailure: ajaxFailed,
