@@ -2,9 +2,8 @@
     include __DIR__ . '/../../include/core.php';
     $row = $db->query('SELECT * FROM reply WHERE id='.$args['id'].' AND store_id='.$args['store_id'])->fetchAll()[0];
 
-    // header('Content-Type: application/json');
+    header('Content-Type: application/json');
     
-    print_r($args);
     $result = array(
         'id' => $row['id'],
         'username' => $row['username'], 
