@@ -61,6 +61,7 @@ function start() {
         if(item == 16) {
             p_t.innerText = "8강";
             document.querySelector("#round").appendChild(p_t);
+            console.log(wc16[0]);
             for(var i=0; i<16; i+=2) {
                 p_l.innerText = "";
                 p_l.innerText = wc16[i];
