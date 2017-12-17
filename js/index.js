@@ -295,32 +295,32 @@ function function_name(id) {
         onSuccess: (ajax) => {
             var replys = JSON.parse(ajax.responseText);
             console.log(replys);
-            // var divs = document.createElement("div");
-            // divs.setAttribute("class", "replys");
-            // for (var i = 0; i < replys.length; i++) {
-            //     var div = document.createElement("div");
-            //     div.setAttribute("class", "reply");
+            var divs = document.createElement("div");
+            divs.setAttribute("class", "replys");
+            for (var i = 0; i < replys.length; i++) {
+                var div = document.createElement("div");
+                div.setAttribute("class", "reply");
 
-            //     var username = document.createElement("span");
-            //     username.innerText = replys[i].username;
-            //     username.setAttribute("class", "username");
-            //     var reply = document.createElement("span");
-            //     reply.innerText = replys[i].reply;
-            //     reply.setAttribute("class", "reply");
-            //     var created = document.createElement("span");
-            //     created.innerText = replys[i].created;
-            //     created.setAttribute("class", "created");
-            //     var hr = document.createElement("hr");
+                var username = document.createElement("span");
+                username.innerText = replys[i].username;
+                username.setAttribute("class", "username");
+                var reply = document.createElement("span");
+                reply.innerText = replys[i].reply;
+                reply.setAttribute("class", "reply");
+                var created = document.createElement("span");
+                created.innerText = replys[i].created;
+                created.setAttribute("class", "created");
+                var hr = document.createElement("hr");
 
-            //     div.appendChild(username);
-            //     div.appendChild(created);
-            //     div.appendChild(reply);
+                div.appendChild(username);
+                div.appendChild(created);
+                div.appendChild(reply);
 
-            //     divs.appendChild(div);
-            //     divs.appendChild(hr);
-            // }
+                divs.appendChild(div);
+                divs.appendChild(hr);
+            }
 
-            // $("body").appendChild(divs);
+            $("body").appendChild(divs);
 
             // var form = document.createElement("form");
             // var username = document.createElement("input");
