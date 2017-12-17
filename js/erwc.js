@@ -27,6 +27,7 @@ function initiate() {
 function add_candidate() {
     if(total_candidates.length == 0) {
         total_candidates = chosen
+        $('round').innerText = chosen.length + "강";
         chosen = []
         if(total_candidates.length == 1) {
             finalize()
