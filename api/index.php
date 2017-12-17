@@ -5,7 +5,7 @@
         }
     }
 
-    class API {
+    class Restaurants {
         function getAll() {
             require __DIR__ . '/api/restaruants/getAll.php';
         }
@@ -23,6 +23,25 @@
         }
     }
 
+    class Replys {
+        function getAll() {
+            require __DIR__ . '/api/replys/getAll.php';
+        }
+        function getOne() {
+            require __DIR__ . '/api/replys/getOne.php';
+        }
+        function create() {
+            require __DIR__ . '/api/replys/createReply.php';
+        }
+        function update() {
+            require __DIR__ . '/api/replys/editReply.php';
+        }
+        function remove() {
+            require __DIR__ . '/api/replys/deleteReply.php';
+        }
+        
+    }
+
     ini_set('display_startup_errors', 1);
     ini_set('display_errors', 1);
     error_reporting(-1);
@@ -33,13 +52,18 @@
     $router->setBasePath('/api');
 
     $router->map('GET', '/', 'View#getIndex');
-    $router->map('GET', '/restaruants/', 'API#getAll');
-    $router->map('GET', '/restaruants/[i:id]', 'API#getOne');
-    $router->map('GET', '/restaruants/[i:id]/menu', 'API#getMenu');
-    $router->map('GET', '/restaruants/nearby', 'API#getNearby');
-    $router->map('POST', '/restaruants/search', 'API#search');
-    $router->map('GET', '/restaruants/id', 'API#getIds');
-
+    $router->map('GET', '/restaruants/', 'Restaurants#getAll');
+    $router->map('GET', '/restaruants/[i:id]', 'Restaurants#getOne');
+    $router->map('GET', '/restaruants/[i:id]/menu', 'Restaurants#getMenu');
+    $router->map('GET', '/restaruants/nearby', 'Restaurants#getNearby');
+    $router->map('POST', '/restaruants/search', 'Restaurants#search');
+    $router->map('GET', '/restaruants/id', 'Restaurants#getIds');
+    $router->map('GET', '/replys/[i:store_id]', 'Replys#getAll');
+    $router->map('POST', '/replys', 'Replys#create');
+    $router->map('PUT', '/replys', 'Replys#update');
+    $router->map('DELETE', '/replys', 'Replys#remove');
+    $router->map('GET', '/replys/[i:store_id]/[i:id]', 'Replys#getOne');
+    
     // match current request url
     $match = $router->match();
 
