@@ -7,5 +7,5 @@
     foreach($rows as $row) {
         $result[] = array('ID' => $row['ID'], 'name' => $row['name'], 'address' => $row['address_1']);
     }
+    echo json_encode($result);
 ?>
-<? echo json_encode($result) ?>

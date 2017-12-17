@@ -11,5 +11,5 @@
     foreach($rows as $row) {
         array_push($result, $row['ID']);
     }
+    echo json_encode($result);
 ?>
-<? echo json_encode($result) ?>
