@@ -285,7 +285,6 @@ function moveStore(ajax) {
     }
 
     $$("main")[0].appendChild(body);
-    console.log(store.ID);
     function_name(store.ID);
 
 }
@@ -295,50 +294,52 @@ function function_name(id) {
         method: "GET",
         onSuccess: (ajax) => {
             var replys = JSON.parse(ajax.responseText);
-            var divs = document.createElement("div");
-            divs.setAttribute("class", "replys");
-            for (var i = 0; i < replys.length; i++) {
-                var div = document.createElement("div");
-                div.setAttribute("class", "reply");
+            console.log(replys);
+            // var divs = document.createElement("div");
+            // divs.setAttribute("class", "replys");
+            // for (var i = 0; i < replys.length; i++) {
+            //     var div = document.createElement("div");
+            //     div.setAttribute("class", "reply");
 
-                var username = document.createElement("span");
-                username.innerText = replys[i].username;
-                username.setAttribute("class", "username");
-                var reply = document.createElement("span");
-                reply.innerText = replys[i].reply;
-                reply.setAttribute("class", "reply");
-                var created = document.createElement("span");
-                created.innerText = replys[i].created;
-                created.setAttribute("class", "created");
-                var hr = document.createElement("hr");
+            //     var username = document.createElement("span");
+            //     username.innerText = replys[i].username;
+            //     username.setAttribute("class", "username");
+            //     var reply = document.createElement("span");
+            //     reply.innerText = replys[i].reply;
+            //     reply.setAttribute("class", "reply");
+            //     var created = document.createElement("span");
+            //     created.innerText = replys[i].created;
+            //     created.setAttribute("class", "created");
+            //     var hr = document.createElement("hr");
 
-                div.appendChild(username);
-                div.appendChild(created);
-                div.appendChild(reply);
+            //     div.appendChild(username);
+            //     div.appendChild(created);
+            //     div.appendChild(reply);
 
-                divs.appendChild(div);
-            }
+            //     divs.appendChild(div);
+            //     divs.appendChild(hr);
+            // }
 
-            $("body").appendChild(divs);
+            // $("body").appendChild(divs);
 
-            var form = document.createElement("form");
-            var username = document.createElement("input");
-            username.setAttribute("type", "text");
-            username.setAttribute("name", "username");
-            username.setAttribute("id", "username");
-            var password = document.createElement("input");
-            password.setAttribute("type", "password");
-            password.setAttribute("name", "password");
-            password.setAttribute("id", "password");
-            var contents = document.createElement("textarea");
-            contents.setAttribute("name", "contents");
-            contents.setAttribute("id", "contents");
+            // var form = document.createElement("form");
+            // var username = document.createElement("input");
+            // username.setAttribute("type", "text");
+            // username.setAttribute("name", "username");
+            // username.setAttribute("id", "username");
+            // var password = document.createElement("input");
+            // password.setAttribute("type", "password");
+            // password.setAttribute("name", "password");
+            // password.setAttribute("id", "password");
+            // var contents = document.createElement("textarea");
+            // contents.setAttribute("name", "contents");
+            // contents.setAttribute("id", "contents");
 
-            form.appendChild(username);
-            form.appendChild(password);
-            form.appendChild(contents);
+            // form.appendChild(username);
+            // form.appendChild(password);
+            // form.appendChild(contents);
 
-            $("body").appendChild(form);
+            // $("body").appendChild(form);
         },
         onFailure: ajaxFailed,
         onException: ajaxFailed
