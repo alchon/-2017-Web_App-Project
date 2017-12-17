@@ -18,6 +18,7 @@ window.onload = () => {
         onFailure: ajaxFailed,
         onException: ajaxFailed
     })
+    console.log(names);
     start();
 }
 
