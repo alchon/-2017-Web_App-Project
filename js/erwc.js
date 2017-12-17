@@ -47,7 +47,10 @@ function add_candidate() {
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
             // console.log(store)
-            $('left').innerText = store.store.name
+            var p = document.createElement("p");
+            p.innerText = store.store.name;
+            document.querySelector("#left").appendChild(p);
+            // $('left').innerText = store.store.name
         }
     })
     new Ajax.Request("/api/restaruants/" + total_candidates[y], {
