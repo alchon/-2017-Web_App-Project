@@ -196,28 +196,27 @@ window.onload = () => {
             var element = document.querySelector("svg#layer_1");
             var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
             element.innerHTML = ''
-            element.innerHTML = newHTML
+            element.innerHTML = newHTML;
+            var boxes = $$(".box");
+            for (var i = 0; i < boxes.length; i++) {
+                boxes[i].onmousemove = (event) => {
+                    var x = event.pageX - 100;
+                    var y = event.pageY - 60;
+                    popupRefresh(x,y);
+                }
+                boxes[i].onmouseover = (event) => {
+                    console.log(stores);
+                    var id = event.target.getAttribute("id");
+                    loadStore(stores[parseInt(id.slice(1))]);
+                };
+                boxes[i].onmouseout = () => {
+                      $("popup").setStyle({
+                        display: "none"
+                    });
+                }
+            }
         },
         onFailure: ajaxFailed,
         onException: ajaxFailed
     });
-
-    var boxes = $$(".box");
-    for (var i = 0; i < boxes.length; i++) {
-        boxes[i].onmousemove = (event) => {
-            var x = event.pageX - 100;
-            var y = event.pageY - 60;
-            popupRefresh(x,y);
-        }
-        boxes[i].onmouseover = (event) => {
-            console.log(stores);
-            var id = event.target.getAttribute("id");
-            loadStore(stores[parseInt(id.slice(1))]);
-        };
-        boxes[i].onmouseout = () => {
-              $("popup").setStyle({
-                display: "none"
-            });
-        }
-    }
 }
