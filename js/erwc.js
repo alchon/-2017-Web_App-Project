@@ -27,7 +27,15 @@ function initiate() {
 function add_candidate() {
     if(total_candidates.length == 0) {
         total_candidates = chosen
-        $('round').innerText = chosen.length + "강";
+        if(chosen.length > 2) {
+            $('round').innerText = chosen.length*2 + "강";
+        }
+        else if(chosen.length == 2) {
+            $('round').innerText = "준결승";
+        }
+        else {
+            $('round').innerText = "결승";
+        }
         chosen = []
         if(total_candidates.length == 1) {
             finalize()
