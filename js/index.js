@@ -148,7 +148,7 @@ window.onload = () => {
 
     $("search").onclick = () => {
         new Ajax.Request("http://35.203.158.60:8080/api/restaruants/search",{
-            method: "GET",
+            method: "POST",
             parameters: {query: $("text").value},
             onSuccess: successSearch,
             onFailure: ajaxFailed,
