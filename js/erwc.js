@@ -12,14 +12,11 @@ function initiate() {
     chosen = []
     while(total_candidates.length < 16) {
         let i = -1
-        console.log(total_candidates)
         do {
-            console.log(i)
             i = Math.floor(Math.random() * 85) + 1
         } while(total_candidates.indexOf(i) != -1)
         total_candidates.push(i)
     } 
-    console.log(total_candidates)
     $('start').innerText = 'Restart'
     $('left').onclick = () => choose('x')
     $('right').onclick = () => choose('y')
@@ -40,6 +37,8 @@ function add_candidate() {
     do {
         y = Math.floor(Math.random() * total_candidates.length)
     } while(x != y)
+    console.log(x)
+    console.log(y)
     new Ajax.Request("/api/restaruants/" + total_candidates[x], {
         method: 'GET',
         onSuccess: (ajax) => {
