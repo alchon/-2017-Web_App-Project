@@ -20,6 +20,6 @@
         );
         array_push($result['menus'], $pushMenu);
     }
+    echo json_encode($result);
 ?>
-<? echo json_encode($result) ?>
  
