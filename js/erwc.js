@@ -21,17 +21,29 @@ function initiate() {
     $('left').onclick = () => choose('x')
     $('right').onclick = () => choose('y')
     add_candidate()
-    is_started = true;
+    $('round').innerText = '16강'
+    is_started = true
 }
 
 function add_candidate() {
+    // if(total_candidates.length > 8) {
+    //     $('round').innerText = "16강";
+    // }
+    // else if(total_candidates.length)
+    // else if(total_candidates.length == 4) {
+    //     $('round').innerText = "준결승";
+    // }
+    // else {
+    //     $('round').innerText = "결승";
+    // }
     if(total_candidates.length == 0) {
         total_candidates = chosen
         chosen = []
         if(total_candidates.length == 1) {
             finalize()
             return
-        }
+        } 
+        $('round').innerText = ((total_candidates.length == 2) ? '결승' : (total_candidates.length + '강'))
     }
     x = Math.floor(Math.random() * total_candidates.length)
     do {
@@ -69,12 +81,13 @@ function choose(a) {
 }
 
 function finalize() {
-    alert('Winner: ' + total_candidates[0])
+    // alert('Winner: ' + total_candidates[0])
     is_started = false
     new Ajax.Request('/api/restaruants/' + total_candidates[0], {
         method: 'GET', 
         onSuccess: (ajax) => {
-            $('round').innerText = JSON.parse(ajax.responseText).store.name
+            // $('round').innerText = JSON.parse(ajax.responseText).store.name
+            alert('Winner: ' + JSON.parse(ajax.responseText).store.name);
         }
     })
 }

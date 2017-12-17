@@ -231,7 +231,7 @@ rect.search {
 }
 hr {
     border: 0.5px solid black;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
 }
 
@@ -262,7 +262,7 @@ hr {
     padding : 0.5%;
 }
 .card-hr{
-    width : 85%;
+    width : 90%;
 }
 #original {
     font-size: 11pt;

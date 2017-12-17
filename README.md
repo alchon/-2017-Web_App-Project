@@ -25,7 +25,7 @@ Our project informs about restaurants.
 - Restaurants world cup.  
 
 ## Execute  
-Start to this link.    
+Click this link to start.    
 [ERICA_restaurant](https://what-to-eat-erica.duckdns.org:8443/)
 
 ## Feedback  
