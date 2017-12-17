@@ -20,6 +20,7 @@ window.onload = () => {
 function initiate(stores) {
     total_candidates = []
     chosen = []
+    console.log(stores)
     while(total_candidates.length < 16) total_candidates.push(stores.splice(Math.floor(Math.random() * stores.length)))
     console.log(total_candidates)
     $('start').innerText = 'Restart'
@@ -46,14 +47,14 @@ function add_candidate() {
         method: 'GET',
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
-            $('left').innerText = store
+            $('left').innerText = store.name
         }
     })
     new Ajax.Request("/api/restaruants/" + total_candidates[y], {
         method: 'GET',
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
-            $('left').innerText = store
+            $('left').innerText = store.name
         }
     })
 }
