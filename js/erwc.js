@@ -57,12 +57,11 @@ function add_candidate() {
 
 function choose(a) {
     if(is_started) {
-        const win = ((a == 'x') ? x : y)
-        const lose = ((a == 'x') ? y : x)
-        console.log(win + ' ' + total_candidates[win])
-        console.log(lose + ' ' + total_candidates[lose])
-        chosen.push(total_candidates.splice(win, 1)[0])
-        total_candidates.splice(lose, 1)
+        const win = total_candidates[((a == 'x') ? x : y)]
+        const lose = total_candidates[((a == 'x') ? y : x)]
+        console.log(win + ' ' + lose)
+        chosen.push(total_candidates.splice(total_candidates.indexOf(win), 1))
+        total_candidates.splice(total_candidates.indexOf(lose), 1)
         console.log(chosen)
         console.log(total_candidates)
         add_candidate()
