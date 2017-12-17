@@ -11,7 +11,7 @@
     height: 370px;
     float: left;
     background-color: darkgray;
-    padding-right: 10px;
+    margin-right: 10px;
     border: 1px solid black
 }
 #right {

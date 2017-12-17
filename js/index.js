@@ -181,6 +181,7 @@ window.onload = () => {
             stores = JSON.parse(ajax.responseText);
             for(var i = 0; i < stores.length; i++) {
                 var item = stores[i];
+                console.log(item);
                 const rect = document.createElement('rect');
                 rect.setAttribute('x', item.x);
                 rect.setAttribute('y', item.y);
