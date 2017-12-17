@@ -36,7 +36,10 @@ function add_candidate() {
             finalize()
             return
         } 
-        $('round').innerText = ((total_candidates.length == 2) ? '결승' : (total_candidates.length + '강'))
+        var p = document.createElement("p");
+        p.innerText = ((total_candidates.length == 2) ? '결승' : (total_candidates.length + '강'));
+        document.querySelector("#round").appendChild(p);
+        // $('round').innerText = ((total_candidates.length == 2) ? '결승' : (total_candidates.length + '강'))
     }
     x = Math.floor(Math.random() * total_candidates.length)
     do {
@@ -48,7 +51,7 @@ function add_candidate() {
             store = JSON.parse(ajax.responseText)
             // console.log(store)
             var p = document.createElement("p");
-            p.setAttribute("id", "left_name");
+            // p.setAttribute("id", "left_name");
             p.innerText = store.store.name;
             document.querySelector("#left").appendChild(p);
             // $('left').innerText = store.store.name
@@ -59,7 +62,10 @@ function add_candidate() {
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
             // console.log(store)
-            $('right').innerText = store.store.name
+            var p = document.createElement("p");
+            p.innerText = store.store.name;
+            document.querySelector("#right").appendChild(p);
+            // $('right').innerText = store.store.name
         }
     })
 }
