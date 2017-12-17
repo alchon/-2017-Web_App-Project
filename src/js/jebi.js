@@ -7,14 +7,9 @@ window.onload = () => {
         method: "get",
         onSuccess : (ajax) => {
             var data = JSON.parse(ajax.responseText);
-            var index = Math.floor(Math.random()*(data.length));
-            var name = data[index].name;
-            var p = document.createElement("p");
-            var p2 = document.createElement("p");
-            p.innerHTML = name;
-            p2.innerHTML = "어떠세요??"
-            document.querySelector("#div").appendChild(p);
-            document.querySelector("p").appendChild(p2);
+            for(var i=0; i<data.length; i++) {
+                names.push(data[i].name);
+            }
         },
         onFailure: ajaxFailure,
         onException: ajaxFailure
@@ -56,17 +51,16 @@ function outClick() {
 //     });
 // }
 
-// function showStores_JSON(event) {
-//     var data = JSON.parse(ajax.responseText);
-//     var index = Math.floor(Math.random()*(data.title.length));
-//     var title = data.title[index];
-//     var p = document.createElement("p");
-//     var p2 = document.createElement("p");
-//     p.innerHTML = title;
-//     p2.innerHTML = "어떠세요??"
-//     document.querySelector("h1").appendChild(p);
-//     document.querySelector("p").appendChild(p2);
-// }
+function showStores() {
+    var index = Math.floor(Math.random()*(names.length));
+    var name = names[index];
+    var p = document.createElement("p");
+    var p2 = document.createElement("p");
+    p.innerHTML = name;
+    p2.innerHTML = "어떠세요??"
+    document.querySelector("#div").appendChild(p);
+    document.querySelector("p").appendChild(p2);
+}
 
 // function ajaxFailed(ajax, exception) {
 //     var errorMessage = "Error making Ajax request:\n\n";
