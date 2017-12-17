@@ -322,6 +322,14 @@ function function_name(id) {
 
             $$(".body")[0].appendChild(divs);
 
+            var comments = document.createElement("p");
+            comments.setAttribute("id", "comments");
+            comments.innerText = "COMMENTS";
+
+            $$(".body")[0].appendChild(comments);
+            var hr = document.createElement("hr");
+            hr.setAttribute("class", "menu-hr");
+
             var form = document.createElement("form");
             var username = document.createElement("input");
             username.setAttribute("type", "text");
