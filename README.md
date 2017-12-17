@@ -28,3 +28,5 @@ Our project informs about restaurants.
 Start to this link.    
 [ERICA_restaurant](https://what-to-eat-erica.duckdns.org:8443/)
 
+## Feedback  
+To report bugs, please create a GitHub issue.  
