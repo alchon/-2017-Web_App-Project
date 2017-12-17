@@ -43,6 +43,7 @@ function add_candidate() {
         method: 'GET',
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
+            console.log(store)
             $('left').innerText = store.name
         }
     })
@@ -50,7 +51,8 @@ function add_candidate() {
         method: 'GET',
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
-            $('left').innerText = store.name
+            console.log(store)
+            $('right').innerText = store.name
         }
     })
 }
