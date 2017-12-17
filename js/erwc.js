@@ -37,8 +37,8 @@ function add_candidate() {
     do {
         y = Math.floor(Math.random() * total_candidates.length)
     } while(x == y)
-    console.log(x)
-    console.log(y)
+    console.log(total_candidates[x])
+    console.log(total_candidates[y])
     new Ajax.Request("/api/restaruants/" + total_candidates[x], {
         method: 'GET',
         onSuccess: (ajax) => {
