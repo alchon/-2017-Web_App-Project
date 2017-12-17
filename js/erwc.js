@@ -14,10 +14,9 @@ function initiate() {
         let i = -1
         do {
             i = Math.floor(Math.random() * 85) + 1
-        } while(total_candidates.indexOf(i) == -1)
+        } while(total_candidates.indexOf(i) != -1)
         total_candidates.push(i)
     } 
-    console.log(total_candidates)
     $('start').innerText = 'Restart'
     $('left').onclick = () => choose('x')
     $('right').onclick = () => choose('y')
@@ -26,44 +25,52 @@ function initiate() {
 }
 
 function add_candidate() {
-    if(chosen.length == total_candidates.length) {
+    if(total_candidates.length == 0) {
         total_candidates = chosen
         chosen = []
-    }
-    if(chosen.length == 1) {
-        finalize()
-        return
+        if(total_candidates.length == 1) {
+            finalize()
+            return
+        }
     }
     x = Math.floor(Math.random() * total_candidates.length)
     do {
         y = Math.floor(Math.random() * total_candidates.length)
-    } while(x != y)
+    } while(x == y)
     new Ajax.Request("/api/restaruants/" + total_candidates[x], {
         method: 'GET',
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
-            $('left').innerText = store.name
+            console.log(store)
+            $('left').innerText = store.store.name
         }
     })
     new Ajax.Request("/api/restaruants/" + total_candidates[y], {
         method: 'GET',
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
-            $('left').innerText = store.name
+            console.log(store)
+            $('right').innerText = store.store.name
         }
     })
 }
 
 function choose(a) {
     if(is_started) {
-        chosen.push(total_candidates.splice((a == 'x') ? x : y))
-        total_candidates.splice((a == 'x') ? y : x)
+        const win = total_candidates[((a == 'x') ? x : y)]
+        const lose = total_candidates[((a == 'x') ? y : x)]
+        console.log(win + ' ' + lose)
+        chosen.push(total_candidates.splice(total_candidates.indexOf(win), 1)[0])
+        total_candidates.splice(total_candidates.indexOf(lose), 1)
+        console.log(chosen)
+        console.log(total_candidates)
         add_candidate()
     }
 }
 
 function finalize() {
     alert('Winner: ' + total_candidates)
+    is_started = false
 }
 
 function ajaxFailed(ajax) {
