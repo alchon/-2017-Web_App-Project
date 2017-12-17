@@ -18,6 +18,9 @@
         function search($args) {
             require __DIR__ . '/api/restaruants/search.php';
         }
+        function search($args) {
+            require __DIR__ . '/api/restaruants/getIds.php';
+        }
     }
 
     ini_set('display_startup_errors', 1);
@@ -35,6 +38,7 @@
     $router->map('GET', '/restaruants/[i:id]/menu', 'API#getMenu');
     $router->map('GET', '/restaruants/nearby', 'API#getNearby');
     $router->map('POST', '/restaruants/search', 'API#search');
+    $router->map('POST', '/restaruants/id', 'API#getIds');
 
     // match current request url
     $match = $router->match();
