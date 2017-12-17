@@ -9,7 +9,7 @@ window.onload = () => {
             method: "GET",
             onSuccess: (ajax) => {
                 stores = JSON.parse(ajax.responseText)
-                initiate(stores)
+                initiate(stores.map((item, index) => item['ID']))
             },
             onFailure: ajaxFailed,
             onException: ajaxFailed
