@@ -141,9 +141,9 @@ function successSearch(ajax) {
     for(var i = 0; i < rects.length; i++) {
         var item = rects[i];
         if(restaruants.indexOf(item.id.substring(1)) != -1) {
-            document.getElementById(item.id).classList.add('selected');
+            document.getElementById(item.id).classList.add('search');
         } else {
-            document.getElementById(item.id).classList.remove('selected');
+            document.getElementById(item.id).classList.remove('search');
         }
     }
     var element = document.querySelector("svg#layer_1");

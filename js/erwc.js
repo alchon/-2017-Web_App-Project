@@ -69,8 +69,14 @@ function choose(a) {
 }
 
 function finalize() {
-    alert('Winner: ' + total_candidates)
+    alert('Winner: ' + total_candidates[0])
     is_started = false
+    new Ajax.Request('/api/restaruants/' + total_candidates[0], {
+        method: 'GET', 
+        onSuccess: (ajax) => {
+            $('round').innerText = JSON.parse(ajax.responseText).store.name
+        }
+    })
 }
 
 function ajaxFailed(ajax) {

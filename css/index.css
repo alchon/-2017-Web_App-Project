@@ -208,6 +208,10 @@ rect.selected {
     fill: #F31208;
 }
 
+rect.search { 
+    fill: rgb(96, 27, 223);
+}
+
 .container {
     margin: 0 auto;
     width: 765px;
