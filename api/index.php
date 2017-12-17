@@ -38,7 +38,7 @@
     $router->map('GET', '/restaruants/[i:id]/menu', 'API#getMenu');
     $router->map('GET', '/restaruants/nearby', 'API#getNearby');
     $router->map('POST', '/restaruants/search', 'API#search');
-    $router->map('POST', '/restaruants/id', 'API#getIds');
+    $router->map('GET', '/restaruants/id', 'API#getIds');
 
     // match current request url
     $match = $router->match();
