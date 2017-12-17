@@ -286,7 +286,7 @@ function moveStore(ajax) {
 
     $$("main")[0].appendChild(body);
 
-    function_name(store.id);
+    function_name(store.ID);
 
 }
 
