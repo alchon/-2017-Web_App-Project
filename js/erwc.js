@@ -61,12 +61,15 @@ function choose(a) {
     if(is_started) {
         chosen.push(total_candidates.splice((a == 'x') ? x : y))
         total_candidates.splice((a == 'x') ? y : x)
+        console.log(chosen)
+        console.log(total_candidates)
         add_candidate()
     }
 }
 
 function finalize() {
     alert('Winner: ' + total_candidates)
+    is_started = false
 }
 
 function ajaxFailed(ajax) {
