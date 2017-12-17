@@ -282,9 +282,6 @@ function moveStore(ajax) {
 
     // var j = 1;
 
-    var card_hr = document.createElement("hr");
-    card_hr.setAttribute("class", "card-hr");
-
     for (var i = 0; i < menus.length; i++) {
         var menucard = document.createElement("div");
         menucard.setAttribute("class", "menucard");
@@ -295,10 +292,13 @@ function moveStore(ajax) {
 
         var menu_price = document.createElement("span");
         menu_price.setAttribute("class", "menu_price");
-        menu_price.innerText = menus[i].price;
+        menu_price.innerText = menus[i].price + "원";
 
         menucard.appendChild(menu_name);
         menucard.appendChild(menu_price);
+
+        var card_hr = document.createElement("hr");
+        card_hr.setAttribute("class", "card-hr");
 
         body.appendChild(menucard);
         body.appendChild(card_hr);
