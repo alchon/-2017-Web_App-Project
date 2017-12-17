@@ -210,7 +210,7 @@ window.onload = () => {
 function moveStore(ajax) {
     var info = JSON.parse(ajax.responseText);
     var store = info.store;
-    var menu = info.menu;
+    var menu = info.menus;
     removeElements();
 
     console.log(info);
