@@ -12,8 +12,8 @@
         if(!is_numeric($k))
             $result['store'][$k] = $v;
     }
-    print_r($menus);
     foreach($menus as $menu) {
+        print_r($menu);
         $pushMenu = array(
             'name' => $menu['name'],
             'price' => $menu['price'],
