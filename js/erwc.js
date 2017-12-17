@@ -21,6 +21,7 @@ function initiate(stores) {
     total_candidates = []
     chosen = []
     while(total_candidates.length < 16) total_candidates.push(stores.splice(Math.floor(Math.random() * stores.length)))
+    console.log(total_candidates)
     $('start').innerText = 'Restart'
     $('left').onclick = () => choose('x')
     $('right').onclick = () => choose('y')
