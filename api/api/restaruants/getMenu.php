@@ -6,14 +6,13 @@
     );
     $row = $db->query('SELECT * FROM store WHERE ID='.$args['id'])->fetchAll()[0];
     $menus = $db->query('SELECT * FROM menu WHERE ID='.$args['id']);
-    // header('Content-Type: application/json');
+    header('Content-Type: application/json');
     
     foreach($row as $k => $v) {
         if(!is_numeric($k))
             $result['store'][$k] = $v;
     }
     foreach($menus as $menu) {
-        print_r($menu);
         $pushMenu = array(
             'name' => $menu['name'],
             'price' => $menu['price'],
@@ -21,6 +20,6 @@
         );
         array_push($result['menus'], $pushMenu);
     }
-    // echo json_encode($result);
+    echo json_encode($result);
 ?>
  
