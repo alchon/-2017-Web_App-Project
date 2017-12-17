@@ -52,6 +52,7 @@ function pick() {
 
 function start() {
     pick();
+    console.log(wc16);
     var item = 16;
     var p_l = document.createElement("p");
     var p_r = document.createElement("p");
