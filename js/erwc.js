@@ -26,16 +26,6 @@ function initiate() {
 }
 
 function add_candidate() {
-    // if(total_candidates.length > 8) {
-    //     $('round').innerText = "16강";
-    // }
-    // else if(total_candidates.length)
-    // else if(total_candidates.length == 4) {
-    //     $('round').innerText = "준결승";
-    // }
-    // else {
-    //     $('round').innerText = "결승";
-    // }
     if(total_candidates.length == 0) {
         total_candidates = chosen
         chosen = []
@@ -53,7 +43,7 @@ function add_candidate() {
         method: 'GET',
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
-            console.log(store)
+            // console.log(store)
             $('left').innerText = store.store.name
         }
     })
@@ -61,7 +51,7 @@ function add_candidate() {
         method: 'GET',
         onSuccess: (ajax) => {
             store = JSON.parse(ajax.responseText)
-            console.log(store)
+            // console.log(store)
             $('right').innerText = store.store.name
         }
     })
@@ -71,11 +61,11 @@ function choose(a) {
     if(is_started) {
         const win = total_candidates[((a == 'x') ? x : y)]
         const lose = total_candidates[((a == 'x') ? y : x)]
-        console.log(win + ' ' + lose)
+        // console.log(win + ' ' + lose)
         chosen.push(total_candidates.splice(total_candidates.indexOf(win), 1)[0])
         total_candidates.splice(total_candidates.indexOf(lose), 1)
-        console.log(chosen)
-        console.log(total_candidates)
+        // console.log(chosen)
+        // console.log(total_candidates)
         add_candidate()
     }
 }
