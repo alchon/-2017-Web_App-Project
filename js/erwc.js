@@ -4,7 +4,7 @@ var wc8 = [];
 var wc4 = [];
 var wc2 = [];
 var wc1 = [];
-var check = [];
+var check = "";
 
 window.onload = () => {
     new Ajax.Request("/ERICA_restaurant/php/api/restaurants", {
@@ -28,7 +28,7 @@ function pick() {
             console.log(2);
             if(check.indexOf(index) == -1) {
                 console.log(1);
-                check.push(index);
+                check += index;
                 wc16.push(names[index]);
                 break;
             }
