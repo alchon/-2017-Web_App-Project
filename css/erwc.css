@@ -12,7 +12,8 @@
     float: left;
     background-color: darkgray;
     margin-right: 10px;
-    border: 1px solid black
+    border: 1px solid black;
+    font-size : 50pt;
 }
 #right {
     width: 280px;
