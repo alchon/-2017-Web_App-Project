@@ -125,6 +125,18 @@ function start() {
             var p_f = document.createElement("p");   
             p_f.innerText = wc1[0];
             document.querySelector("#finish").appendChild(p_t);
+            break;
         }
     }
+}
+
+function ajaxFailed(ajax, exception) {
+    var errorMessage = "Error making Ajax request:\n\n";
+    if (exception) {
+        errorMessage += "Exception: " + exception.message;
+    } else {
+        errorMessage += "Server status:\n" + ajax.status + " " + ajax.statusText +
+                        "\n\nServer response text:\n" + ajax.responseText;
+    }
+    console.log(errorMessage);
 }
