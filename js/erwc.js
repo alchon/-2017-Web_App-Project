@@ -62,7 +62,7 @@ function choose(a) {
         console.log(a)
         console.log(x)
         console.log(y)
-        chosen.push(total_candidates.splice(((a == 'x') ? x : y)), 1)
+        chosen.push(total_candidates.splice(((a == 'x') ? x : y))[0], 1)
         total_candidates.splice(((a == 'x') ? y : x), 1)
         console.log(chosen)
         console.log(total_candidates)
