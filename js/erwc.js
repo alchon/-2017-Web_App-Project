@@ -74,7 +74,8 @@ function finalize() {
     new Ajax.Request('/api/restaruants/' + total_candidates[0], {
         method: 'GET', 
         onSuccess: (ajax) => {
-            $('round').innerText = JSON.parse(ajax.responseText).store.name
+            // $('round').innerText = JSON.parse(ajax.responseText).store.name
+            alert('Winner: ' + JSON.parse(ajax.responseText).store.name);
         }
     })
 }
