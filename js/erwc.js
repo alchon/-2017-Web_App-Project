@@ -7,7 +7,7 @@ var wc1 = [];
 var check = "";
 
 window.onload = () => {
-    new Ajax.Request("/ERICA_restaurant/php/api/restaurants", {
+    new Ajax.Request("http://35.203.158.60:8080/api/restaruants/", {
         method: "get",
         onSuccess : (ajax) => {
             var data = JSON.parse(ajax.responseText);
