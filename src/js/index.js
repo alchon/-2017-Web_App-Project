@@ -51,10 +51,21 @@ function popupRefresh(x, y) {
     });
 }
 
+function jebi() {
+    // var x = window.innerWidth/4;
+    // var y = window.innerHeight/4;
+    // console.log(x);
+    // console.log(y);
+    // var specs = "width=400, htidht=600, top="+x+", left="+y;
+    jebiWindow = window.open("jebi.html", "제비 뽑기" , "width=400, height=600, top=200, left=300");
+    return false;
+}
 
 window.onload = () => {
     $("drawer-toggle").onclick = setOpened;
     $("blocker").onclick = removeOpened;
+
+    $("jebi").onclick = jebi;
 
     var stores;
 
