@@ -61,10 +61,10 @@ function start() {
         if(item == 16) {
             p_t.innerText = "8강";
             document.querySelector("#round").appendChild(p_t);
-            console.log(wc16[0]);
             for(var i=0; i<16; i+=2) {
                 p_l.innerText = "";
                 p_l.innerText = wc16[i];
+                console.log(wc16[i]);
                 p_r.innerText = "";
                 p_r.innerText = wc16[i+1];
                 document.querySelector("#left").appendChild(p_l);
