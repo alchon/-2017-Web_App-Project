@@ -52,8 +52,6 @@ function pick() {
 
 function start() {
     pick();
-    $("start").addClassName("hidden");
-    $("play").removeClassName("hidden");
     console.log(wc16);
     var item = 16;
     var p_l = document.createElement("p");
