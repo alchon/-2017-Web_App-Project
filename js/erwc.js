@@ -8,7 +8,10 @@ window.onload = () => {
         new Ajax.Request("/api/restaruants/",{
             method: "GET",
             onSuccess: (ajax) => {
-                stores = JSON.parse(ajax.responseText).map((item, index) => item['ID'])
+                var tmp = JSON.parse(ajax.responseText)
+                let stores = []
+                for(var i = 0; i < tmp.length; i++)
+                    stores.push(tmp[i].ID)
                 initiate(stores)
             },
             onFailure: ajaxFailed,
