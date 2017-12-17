@@ -59,6 +59,9 @@ function add_candidate() {
 
 function choose(a) {
     if(is_started) {
+        console.log(a)
+        console.log(x)
+        console.log(y)
         chosen.push(total_candidates.splice(((a == 'x') ? x : y)), 1)
         total_candidates.splice(((a == 'x') ? y : x), 1)
         console.log(chosen)
