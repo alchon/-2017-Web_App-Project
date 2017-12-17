@@ -16,7 +16,7 @@ function initiate() {
         do {
             console.log(i)
             i = Math.floor(Math.random() * 85) + 1
-        } while(total_candidates.indexOf(i) == -1)
+        } while(total_candidates.indexOf(i) != -1)
         total_candidates.push(i)
     } 
     console.log(total_candidates)
