@@ -4,14 +4,27 @@
 ![Laguage](https://img.shields.io/badge/css-3-green.svg)
 ![Laguage](https://img.shields.io/badge/php-7-green.svg)
 
-## Team - (not yet)
-- thy2134 : Kyu Jin Cho
-- alchon : Hyeon Beom Seo
-- JoonHyukYang : Joon Hyuk Yang
-- Byeon-jaeheon : Byeon Jae Heon
-- (unkown) : Jun Choi
+## Members
+- [thy2134](https://github.com/thy2134) : Kyu-Jin Cho
+- [alchon](https://github.com/alchon) : Hyeon-Beom Seo
+- [JoonHyukYang](https://github.com/JoonHyukYang) : Joon-Hyuk Yang
+- [Byeon-jaeheon](https://github.com/Byeon-jaeheon) : Jae-Heon Byeon
+- [ProDroper](https://github.com/ProDroper) : Jun Choi
 
 
 ## Intoroduction
-When we have a lunch time, we have to think what to eat. As you know this is very hard.
-So, we thought about list of restaurants in front of the school by category.
+When we have a lunch time, we have to think what to eat. As you know this is very hard.  
+So, we thought about list of restaurants in front of the school by category.  
+Our project informs about restaurants.  
+
+## Features  
+- Search restaurants based on name or category.  
+- Find nearby restaurants based on my location.  
+- Find restaurants based on category.  
+- You can get recommended restaurants by lottery.  
+- Restaurants world cup.  
+
+## Execute  
+Just join  
+[ERICA_restaurant](https://what-to-eat-erica.duckdns.org:8443/)
+
