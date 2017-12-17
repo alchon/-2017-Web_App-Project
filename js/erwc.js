@@ -29,7 +29,7 @@ function add_candidate() {
         total_candidates = chosen
         chosen = []
     }
-    if(chosen.length == 1) {
+    if(total_candidates.length == 1) {
         finalize()
         return
     }
