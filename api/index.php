@@ -24,19 +24,19 @@
     }
 
     class Replys {
-        function getAll() {
+        function getAll($args) {
             require __DIR__ . '/api/replys/getAll.php';
         }
-        function getOne() {
+        function getOne($args) {
             require __DIR__ . '/api/replys/getOne.php';
         }
-        function create() {
+        function create($args) {
             require __DIR__ . '/api/replys/createReply.php';
         }
-        function update() {
+        function update($args) {
             require __DIR__ . '/api/replys/editReply.php';
         }
-        function remove() {
+        function remove($args) {
             require __DIR__ . '/api/replys/deleteReply.php';
         }
         
@@ -58,10 +58,10 @@
     $router->map('GET', '/restaruants/nearby', 'Restaurants#getNearby');
     $router->map('POST', '/restaruants/search', 'Restaurants#search');
     $router->map('GET', '/restaruants/id', 'Restaurants#getIds');
-    $router->map('GET', '/replys/[i:store_id]', 'Replys#getAll');
     $router->map('POST', '/replys', 'Replys#create');
     $router->map('PUT', '/replys', 'Replys#update');
     $router->map('DELETE', '/replys', 'Replys#remove');
+    $router->map('GET', '/replys/[i:store_id]', 'Replys#getAll');
     $router->map('GET', '/replys/[i:store_id]/[i:id]', 'Replys#getOne');
     
     // match current request url
