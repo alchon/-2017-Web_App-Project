@@ -18,9 +18,7 @@ window.onload = () => {
         onFailure: ajaxFailed,
         onException: ajaxFailed
     })
-    console.log(names);
-    console.log(names[0]);
-    start();
+    $("start").onclick = start;
 }
 
 function shuffleRandom(n){
@@ -54,6 +52,9 @@ function pick() {
 
 function start() {
     pick();
+    $("round").removeClassName("hidden");
+    $("left").removeClassName("hidden");
+    $("right").removeClassName("hidden");
     console.log(wc16);
     var item = 16;
     var p_l = document.createElement("p");
