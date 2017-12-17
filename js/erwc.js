@@ -12,7 +12,9 @@ function initiate() {
     chosen = []
     while(total_candidates.length < 16) {
         let i = -1
+        console.log(total_candidates)
         do {
+            console.log(i)
             i = Math.floor(Math.random() * 85) + 1
         } while(total_candidates.indexOf(i) == -1)
         total_candidates.push(i)
