@@ -282,6 +282,7 @@ function moveStore(ajax) {
 
     // var j = 1;
 
+    console.log(menu);
     var card_hr = document.createElement("hr");
     card_hr.setAttribute("class", "card-hr");
 
