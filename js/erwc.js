@@ -43,7 +43,7 @@ function add_candidate() {
             finalize()
             return
         } 
-        $('round').innerText = total_candidates.length + '강'
+        $('round').innerText = ((total_candidates.length == 2) ? '결승' : (total_candidates.length + '강'))
     }
     x = Math.floor(Math.random() * total_candidates.length)
     do {
