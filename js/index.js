@@ -218,12 +218,7 @@ function event_handling() {
         }
         boxes[i].onmouseover = (event) => {
             var id = event.target.getAttribute("id").substring(1);
-            for (var i = 0; i < stores.length; i++) {
-                if (stores[i].id === id) {
-                    loadStore(stores);
-                    break;
-                }
-            }
+            loadStore(stores[id]);
         };
         boxes[i].onmouseout = () => {
               $("popup").setStyle({
