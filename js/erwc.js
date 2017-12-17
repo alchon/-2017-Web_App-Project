@@ -26,6 +26,7 @@ function pick() {
         while(true) {
             var index = Math.floor(Math.random()*(names.length));
             if(check.indexOf(index) != -1) {
+                console.log(1);
                 check.push(index);
                 wc16.push(names[index]);
                 break;
