@@ -6,7 +6,7 @@
     );
     $row = $db->query('SELECT * FROM store WHERE ID='.$args['id'])->fetchAll()[0];
     $menus = $db->query('SELECT * FROM menu WHERE ID='.$args['id']);
-    header('Content-Type: application/json');
+    // header('Content-Type: application/json');
     
     foreach($row as $k => $v) {
         if(!is_numeric($k))
