@@ -27,14 +27,14 @@
 
     $router = new AltoRouter();
 
-    $router->setBasePath('/ERICA_restaruant/php');
+    $router->setBasePath('/api');
 
     $router->map('GET', '/', 'View#getIndex');
-    $router->map('GET', '/api/restaruants/', 'API#getAll');
-    $router->map('GET', '/api/restaruants/[i:id]', 'API#getOne');
-    $router->map('GET', '/api/restaruants/[i:id]/menu', 'API#getMenu');
-    $router->map('GET', '/api/restaruants/nearby', 'API#getNearby');
-    $router->map('POST', '/api/restaruants/search', 'API#search');
+    $router->map('GET', '/restaruants/', 'API#getAll');
+    $router->map('GET', '/restaruants/[i:id]', 'API#getOne');
+    $router->map('GET', '/restaruants/[i:id]/menu', 'API#getMenu');
+    $router->map('GET', '/restaruants/nearby', 'API#getNearby');
+    $router->map('POST', '/restaruants/search', 'API#search');
 
     // match current request url
     $match = $router->match();
