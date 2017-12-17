@@ -319,9 +319,7 @@ function function_name(id) {
                 divs.appendChild(div);
                 divs.appendChild(hr);
             }
-
-            $$(".body")[0].appendChild(divs);
-
+            
             var comments = document.createElement("p");
             comments.setAttribute("id", "comments");
             comments.innerText = "COMMENTS";
@@ -330,6 +328,8 @@ function function_name(id) {
             var hr = document.createElement("hr");
             hr.setAttribute("class", "menu-hr");
             $$(".body")[0].appendChild(hr);
+
+            $$(".body")[0].appendChild(divs);
 
             var form = document.createElement("form");
             var username = document.createElement("input");
