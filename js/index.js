@@ -372,12 +372,36 @@ function load_comment(replys) {
             width: '13px'
         })
 
+        img.onclick = () => delete_reply(replys[i].id)
+
         div.appendChild(img);
 
         
         document.getElementById('reply-area').appendChild(div);
         document.getElementById('reply-area').appendChild(hr);
     }
+}
+
+function delete_reply(id) {
+    const input_password = prompt('Type your password')
+    if(!input_password) {
+        return;
+    }
+    new Ajax.Request('/api/replys/' + store_id + '/' + id, {
+        method: 'DELETE', 
+        onSuccess: (ajax) => {
+            const result = JSON.parse(ajax.responseText);
+            if(result.success) {
+                new Ajax.Request('/api/replys/' + store_id, {
+                    method: 'GET', 
+                    onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
+                    onFailure: ajaxFailed
+                })
+            } else {
+                alert('비밀번호가 틀립니다');
+            }
+        }
+    })
 }
 
 function submit_reply() {
@@ -393,7 +417,7 @@ function submit_reply() {
             password: password,
             contents: contents
         },
-        onSuccess: new Ajax.Request('/api/replys/' + store_id, {
+        onSuccess:() => new Ajax.Request('/api/replys/' + store_id, {
             method: 'GET', 
             onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
             onFailure: ajaxFailed

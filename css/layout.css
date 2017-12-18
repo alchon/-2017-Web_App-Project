@@ -10,7 +10,7 @@ button {
     border-radius: 0 0;
 }
 
-form button {
+#reply-form button {
     width: 100%;
     color: black;
     border: none;

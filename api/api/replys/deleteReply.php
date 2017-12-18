@@ -4,10 +4,7 @@
 
     header('Content-Type: application/json');
     
-    $username = $_POST['username'];
     $password = hash('sha256', $_POST['password']);
-    $contents = $_POST['contents'];
-    $created = $_POST['created'];
 
     $query = $db->query("SELECT password FROM reply WHERE id=".$_POST['id'])->fetchAll()[0];
     if($query['password'] != $password) {
