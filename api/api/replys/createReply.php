@@ -19,9 +19,9 @@
 
     $stmt->debugDumpParams();
     
-    $stmt->execute();
-    
+    $result = $stmt->execute();
+    $stmt->closeCursor();
     echo json_encode(array(
-        'success' => true
+        'success' => $result
     ));
 ?>
