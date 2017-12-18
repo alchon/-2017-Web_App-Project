@@ -91,8 +91,19 @@ function finalize() {
     new Ajax.Request('/api/restaruants/' + total_candidates[0], {
         method: 'GET', 
         onSuccess: (ajax) => {
+            const d = new Date();
+            let a = '';
+            if(6 <= d.getHours() && d.getHours() <= 10) {
+                a = '아침';
+            } else if (11 <= d.getHours() && d.getHours() <= 16) {
+                a = '점심';
+            } else if(17 <= d.getHours() && d.getHours() <= 22) {
+                a = '저녁';
+            } else { 
+                a = '야식';
+            }
             // $('round').innerText = JSON.parse(ajax.responseText).store.name
-            alert('야호 오늘은 ' + JSON.parse(ajax.responseText).store.name);
+            alert('야호! 오늘' + a + '은 ' + JSON.parse(ajax.responseText).store.name + '이다!');
         }
     })
 }

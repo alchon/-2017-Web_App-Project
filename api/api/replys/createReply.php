@@ -8,7 +8,6 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
     $password = hash('sha256', $password);
-    echo $password;
     $contents = $_POST['contents'];
     $created = time();
 
