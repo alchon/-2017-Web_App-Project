@@ -328,13 +328,16 @@ function function_name(id) {
             username.setAttribute("type", "text");
             username.setAttribute("name", "username");
             username.setAttribute("id", "username");
+            username.setAttribute("placeholder", "username");
             var password = document.createElement("input");
             password.setAttribute("type", "password");
             password.setAttribute("name", "password");
             password.setAttribute("id", "password");
+            password.setAttribute("placeholder", "password");
             var contents = document.createElement("textarea");
             contents.setAttribute("name", "contents");
             contents.setAttribute("id", "contents");
+            contents.setAttribute("placeholder", "내용을 입력하세요.");
             var submit = document.createElement("button");
             submit.innerText = '댓글 작성';
             submit.onclick = submit_reply
