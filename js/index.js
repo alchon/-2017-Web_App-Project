@@ -334,7 +334,7 @@ function function_name(id) {
             var submit = document.createElement("input");
             submit.setAttribute("type", "submit");
 
-            form.onsubmit = () => submit_reply
+            form.onsubmit = submit_reply
 
             form.appendChild(username);
             form.appendChild(password);
@@ -371,8 +371,8 @@ function load_comment(replys) {
         div.appendChild(created);
         div.appendChild(reply);
 
-        document.getElementsByClassName('reply')[0].appendChild(div);
-        document.getElementsByClassName('reply')[0].appendChild(hr);
+        document.getElementsByClassName('replys')[0].appendChild(div);
+        document.getElementsByClassName('replys')[0].appendChild(hr);
     }
 }
 
