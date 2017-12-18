@@ -125,6 +125,7 @@ function event_handling() {
                 display: "none"
             });
             var id = event.target.getAttribute("id").substring(1);
+            window.location += "#" + id
             new Ajax.Request("/api/restaruants/" + id,{
                 method: "GET",
                 onSuccess: moveStore,
@@ -160,6 +161,158 @@ function popupRefresh(x, y) {
         left:x
     });
 }
+
+
+function moveStore(ajax) {
+    var info = JSON.parse(ajax.responseText);
+    var store = info.store;
+    var menus = info.menus;
+    removeElements();
+
+    console.log(info);
+
+    var body = document.createElement("div");
+    body.setAttribute("class", "body");
+
+    var header = document.createElement("div");
+    header.setAttribute("class", "header");
+
+    var pictrue = document.createElement("div");
+    pictrue.setAttribute("class", "pictrue");
+
+    var img = document.createElement("img");
+    img.setAttribute("src", "http://placehold.it/360x360");
+    img.setAttribute("class", "main");
+
+    var txt = document.createElement("div");
+    txt.setAttribute("class", "txt");
+    var original = document.createElement("p");
+    original.setAttribute("id", "original");
+    original.innerText = store.branch + " > " + store.sub_branch;
+    var r_name = document.createElement("p");
+    r_name.setAttribute("id", "r_name");
+    r_name.innerText = store.name;
+    var add = document.createElement("p");
+    add.setAttribute("id", "add");
+    add.innerText = store.address_1;
+    var phone = document.createElement("p");
+    phone.setAttribute("id", "phone");
+    phone.innerText = store.tel;
+
+    var menu = document.createElement("p");
+    menu.setAttribute("id", "menu");
+    menu.innerText = "MENU";
+    var hr = document.createElement("hr");
+    hr.setAttribute("class", "menu-hr");
+
+    txt.appendChild(original);
+    txt.appendChild(r_name);
+    txt.appendChild(add);
+    txt.appendChild(phone);
+    pictrue.appendChild(img);
+    header.appendChild(pictrue);
+    header.appendChild(txt);
+    body.appendChild(header);
+
+    body.appendChild(menu);
+    body.appendChild(hr);
+
+
+    for (var i = 0; i < menus.length; i++) {
+        var menucard = document.createElement("div");
+        menucard.setAttribute("class", "menucard");
+
+        var menu_name = document.createElement("span");
+        menu_name.setAttribute("class", "menu_name");
+        menu_name.innerText = menus[i].name;
+
+        var menu_price = document.createElement("span");
+        menu_price.setAttribute("class", "menu_price");
+        menu_price.innerText = menus[i].price + "원";
+
+        menucard.appendChild(menu_name);
+        menucard.appendChild(menu_price);
+
+        var card_hr = document.createElement("hr");
+        card_hr.setAttribute("class", "card-hr");
+
+        body.appendChild(menucard);
+        body.appendChild(card_hr);
+    }
+
+    $$("main")[0].appendChild(body);
+    function_name(store.ID);
+
+}
+
+function function_name(id) {
+    new Ajax.Request("/api/replys/" + id, {
+        method: "GET",
+        onSuccess: (ajax) => {
+            var replys = JSON.parse(ajax.responseText);
+            console.log(replys);
+            var divs = document.createElement("div");
+            divs.setAttribute("class", "replys");
+            for (var i = 0; i < replys.length; i++) {
+                var div = document.createElement("div");
+                div.setAttribute("class", "reply");
+
+                var username = document.createElement("span");
+                username.innerText = replys[i].username;
+                username.setAttribute("class", "username");
+                var reply = document.createElement("span");
+                reply.innerText = replys[i].reply;
+                reply.setAttribute("class", "reply");
+                var created = document.createElement("span");
+                created.innerText = replys[i].created;
+                created.setAttribute("class", "created");
+                var hr = document.createElement("hr");
+
+                div.appendChild(username);
+                div.appendChild(created);
+                div.appendChild(reply);
+
+                divs.appendChild(div);
+                divs.appendChild(hr);
+            }
+
+            var comments = document.createElement("p");
+            comments.setAttribute("id", "comments");
+            comments.innerText = "COMMENTS";
+
+            $$(".body")[0].appendChild(comments);
+            var hr = document.createElement("hr");
+            hr.setAttribute("class", "menu-hr");
+            $$(".body")[0].appendChild(hr);
+
+            $$(".body")[0].appendChild(divs);
+
+            var form = document.createElement("form");
+            var username = document.createElement("input");
+            username.setAttribute("type", "text");
+            username.setAttribute("name", "username");
+            username.setAttribute("id", "username");
+            var password = document.createElement("input");
+            password.setAttribute("type", "password");
+            password.setAttribute("name", "password");
+            password.setAttribute("id", "password");
+            var contents = document.createElement("textarea");
+            contents.setAttribute("name", "contents");
+            contents.setAttribute("id", "contents");
+            var submit = document.createElement("input");
+            submit.setAttribute("type", "submit");
+
+            form.appendChild(username);
+            form.appendChild(password);
+            form.appendChild(contents);
+            form.appendChild(submit);
+            $$(".body")[0].appendChild(form);
+        },
+        onFailure: ajaxFailed,
+        onException: ajaxFailed
+    });
+}
+
 
 
 function ajaxFailed(ajax, exception) {
