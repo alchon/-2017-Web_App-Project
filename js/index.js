@@ -296,7 +296,7 @@ function moveStore(ajax) {
 }
 
 function function_name(id) {
-    document.attributes.document_id = id;
+    document.document_id = id;
     new Ajax.Request("/api/replys/" + id, {
         method: "GET",
         onSuccess: (ajax) => {
@@ -381,13 +381,13 @@ function submit_reply() {
     new Ajax.Request('/api/replys' , {
         method: 'POST',
         parameters: {
-            store_id: document.attributes.document_id,
+            store_id: document.document_id,
             username: username,
             password: password,
             contents: contents
         },
         onSuccess: () => {
-            new Ajax.Request('/api/replys/' + document.attributes.document_id, {
+            new Ajax.Request('/api/replys/' + document.document_id, {
                 method: 'GET', 
                 onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
                 onFailure: ajaxFailed
