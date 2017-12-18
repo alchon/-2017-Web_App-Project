@@ -1,3 +1,27 @@
+var stores;
+var map;
+window.onload = () => {
+    $("drawer-toggle").onclick = setOpened;
+    $("blocker").onclick = removeOpened;
+    $("jebi").onclick = jebi;
+    $("erwc").onclick = erwc;
+
+    map = document.querySelector("svg#layer_1");
+    $("search").onclick = () => {
+        new Ajax.Request("/api/restaruants/search",{
+            method: "POST",
+            parameters: {query: $("text").value},
+            onSuccess: successSearch,
+            onFailure: ajaxFailed,
+            onException: ajaxFailed
+        });
+    }
+
+    $("geolocation").onclick = getGeoLocation;
+
+    draw_map();
+}
+
 function setOpened() {
     var drawer = document.getElementById("drawer");
     var blocker = document.getElementById("blocker");
@@ -11,6 +35,141 @@ function removeOpened() {
         var blocker = document.getElementById("blocker");
         drawer.classList.remove("opened");
         blocker.classList.remove("opened");
+    }
+}
+
+function jebi() {
+    jebiWindow = window.open("jebi.html", "제비 뽑기" , "width=400, height=600, top=200, left=300");
+    return false;
+}
+
+function erwc() {
+    erwcWindow = window.open("erwc.html", "푸드컵", "width=600, height=600, top=200, left=300");
+    return false;
+}
+
+function successSearch(ajax) {
+    if (!document.querySelector("svg#layer_1")) {
+        removeElements("main");
+        $$("main")[0].appendChild(map);
+    }
+    const restaruants = JSON.parse(ajax.responseText);
+    const rects = $$('rect.box');
+    for(var i = 0; i < rects.length; i++) {
+        var item = rects[i];
+        document.getElementById(item.id).classList.remove("selected");
+        if(restaruants.indexOf(item.id.substring(1)) != -1) {
+            document.getElementById(item.id).classList.add('search');
+        } else {
+            document.getElementById(item.id).classList.remove('search');
+        }
+    }
+    event_handling();
+}
+
+function getGeoLocation() {
+    if('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition((success) => {
+            console.log(success);
+            new Ajax.Request("/api/restaruants/nearby", {
+                method: "GET", 
+                parameters: {
+                    lat: success.coords.latitude,
+                    lng: success.coords.longitude
+                },
+                onSuccess: (ajax) => {
+                    if (!document.querySelector("svg#layer_1")) {
+                        removeElements("main");
+                        $$("main")[0].appendChild(map);
+                    }
+                    const restaruants = JSON.parse(ajax.responseText);
+                    const rects = $$('rect.box');
+                    for(var i = 0; i < rects.length; i++) {
+                        var item = rects[i];
+                        document.getElementById(item.id).classList.remove('search');
+                        if(restaruants.indexOf(item.id.substring(1)) != -1) {
+                            document.getElementById(item.id).classList.add('selected');
+                        } else {
+                            document.getElementById(item.id).classList.remove('selected');
+                        }
+                    }
+                },
+                onFailure: ajaxFailed,
+                onException: ajaxFailed
+            }
+        );
+        }, (failure) => {
+            console.error(failure);
+        })
+    } else {
+        alert('지오로케이션이 지원되지 않는 환경입니다.');
+        return;
+    }
+}
+
+function draw_map() {
+    new Ajax.Request("/api/restaruants/",
+    {
+        method: "get",
+        onSuccess: (ajax) => {
+            stores = JSON.parse(ajax.responseText);
+            for(var i = 0; i < stores.length; i++) {
+                var item = stores[i];
+                const rect = document.createElement('rect');
+                rect.setAttribute('x', item.x);
+                rect.setAttribute('y', item.y);
+                rect.setAttribute('fill', "#878787");
+                rect.setAttribute('stroke', "#000000");
+                rect.setAttribute('stroke-miterlimit', "10");
+                rect.setAttribute('width', "18");
+                rect.setAttribute('height', "18");
+                if(item.is_rotated) {
+                    rect.setAttribute('transform', 'matrix(0.7071 -0.7071 0.7071 0.7071 '+ item.rx +' '+ item.ry +')')
+                }
+                rect.classList.add('box');
+                rect.id = ('b' + item.ID);
+                map.appendChild(rect);
+            }
+            var newmap = map.innerHTML.substring(0, map.innerHTML.length);
+            map.innerHTML = ''
+            map.innerHTML = newmap;
+            event_handling();
+        },
+        onFailure: ajaxFailed,
+        onException: ajaxFailed
+    });
+}
+
+function event_handling() {
+    var boxes = $$(".box");
+    for (var i = 0; i < boxes.length; i++) {
+        boxes[i].onmousemove = (event) => {
+            var x = event.pageX - ($("popup").getWidth()/2);
+            var y = event.pageY - 60;
+            popupRefresh(x,y);
+        }
+        boxes[i].onmouseover = (event) => {
+            var id = event.target.getAttribute("id").substring(1);
+            loadStore(stores[id-1]);
+        };
+        boxes[i].onmouseout = () => {
+            $("popup").setStyle({
+                display: "none"
+            });
+        }
+        boxes[i].onclick = (event) => {
+            $("popup").setStyle({
+                display: "none"
+            });
+            var id = event.target.getAttribute("id").substring(1);
+            window.location = "#" + id
+            new Ajax.Request("/api/restaruants/" + id,{
+                method: "GET",
+                onSuccess: moveStore,
+                onFailure: ajaxFailed,
+                onException: ajaxFailed
+            });
+        }
     }
 }
 
@@ -40,138 +199,11 @@ function popupRefresh(x, y) {
     });
 }
 
-function jebi() {
-    jebiWindow = window.open("jebi.html", "제비 뽑기" , "width=400, height=600, top=200, left=300");
-    return false;
-}
-
-function erwc() {
-    erwcWindow = window.open("erwc.html", "푸드컵", "width=600, height=600, top=200, left=300");
-    return false;
-}
-
-function getGeoLocation() {
-    if('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition((success) => {
-            console.log(success);
-            new Ajax.Request("/api/restaruants/nearby", {
-                method: "GET", 
-                parameters: {
-                    lat: success.coords.latitude,
-                    lng: success.coords.longitude
-                },
-                onSuccess: (ajax) => {
-                    const restaruants = JSON.parse(ajax.responseText);
-                    const rects = $$('rect.box');
-                    for(var i = 0; i < rects.length; i++) {
-                        var item = rects[i];
-                        if(restaruants.indexOf(item.id.substring(1)) != -1) {
-                            document.getElementById(item.id).classList.add('selected');
-                        } else {
-                            document.getElementById(item.id).classList.remove('selected');
-                        }
-                    }
-                    var element = document.querySelector("svg#layer_1");
-                    var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
-                    element.innerHTML = ''
-                    element.innerHTML = newHTML;
-                    event_handling();
-                },
-                onFailure: ajaxFailed,
-                onException: ajaxFailed
-            }
-        );
-        }, (failure) => {
-            console.error(failure);
-        })
-    } else {
-        alert('지오로케이션이 지원되지 않는 환경입니다.');
-        return;
-    }
-}
-
-function removeElements() {
-    while ($$("main")[0].firstChild){
-        $$("main")[0].removeChild($$("main")[0].firstChild);
-    }
-}
-
-
-function successSearch(ajax) {
-    const restaruants = JSON.parse(ajax.responseText);
-    const rects = $$('rect.box');
-    for(var i = 0; i < rects.length; i++) {
-        var item = rects[i];
-        if(restaruants.indexOf(item.id.substring(1)) != -1) {
-            document.getElementById(item.id).classList.add('search');
-        } else {
-            document.getElementById(item.id).classList.remove('search');
-        }
-    }
-    var element = document.querySelector("svg#layer_1");
-    var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
-    element.innerHTML = ''
-    element.innerHTML = newHTML;
-    event_handling();
-}
-
-var stores;
-
-window.onload = () => {
-    // $("drawer-toggle").onclick = setOpened;
-    // $("blocker").onclick = removeOpened;
-    // $("geolocation").onclick = getGeoLocation;
-
-    // $("jebi").onclick = jebi;
-    // $("erwc").onclick = erwc;
-
-    // $("search").onclick = () => {
-    //     new Ajax.Request("/api/restaruants/search",{
-    //         method: "POST",
-    //         parameters: {query: $("text").value},
-    //         onSuccess: successSearch,
-    //         onFailure: ajaxFailed,
-    //         onException: ajaxFailed
-    //     });
-    // }
-    // new Ajax.Request("/api/restaruants/",
-    // {
-    //     method: "get",
-    //     onSuccess: (ajax) => {
-    //         stores = JSON.parse(ajax.responseText);
-    //         for(var i = 0; i < stores.length; i++) {
-    //             var item = stores[i];
-    //             const rect = document.createElement('rect');
-    //             rect.setAttribute('x', item.x);
-    //             rect.setAttribute('y', item.y);
-    //             rect.setAttribute('fill', "#878787");
-    //             rect.setAttribute('stroke', "#000000");
-    //             rect.setAttribute('stroke-miterlimit', "10");
-    //             rect.setAttribute('width', "18");
-    //             rect.setAttribute('height', "18");
-    //             if(item.is_rotated) {
-    //                 rect.setAttribute('transform', 'matrix(0.7071 -0.7071 0.7071 0.7071 '+ item.rx +' '+ item.ry +')')
-    //             }
-    //             rect.classList.add('box');
-    //             rect.id = ('b' + item.ID);
-    //             document.querySelector('svg#layer_1').appendChild(rect);
-    //         }
-    //         var element = document.querySelector("svg#layer_1");
-    //         var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
-    //         element.innerHTML = ''
-    //         element.innerHTML = newHTML;
-    //         event_handling();
-    //     },
-    //     onFailure: ajaxFailed,
-    //     onException: ajaxFailed
-    // });
-}
-
 function moveStore(ajax) {
     var info = JSON.parse(ajax.responseText);
     var store = info.store;
     var menus = info.menus;
-    removeElements();
+    removeElements("main");
 
     console.log(info);
 
@@ -317,37 +349,11 @@ function function_name(id) {
     });
 }
 
-// function event_handling() {
-//     var boxes = $$(".box");
-//     for (var i = 0; i < boxes.length; i++) {
-//         boxes[i].onmousemove = (event) => {
-//             var x = event.pageX - ($("popup").getWidth()/2);
-//             var y = event.pageY - 60;
-//             popupRefresh(x,y);
-//         }
-//         boxes[i].onmouseover = (event) => {
-//             var id = event.target.getAttribute("id").substring(1);
-//             loadStore(stores[id-1]);
-//         };
-//         boxes[i].onmouseout = () => {
-//             $("popup").setStyle({
-//                 display: "none"
-//             });
-//         }
-//         boxes[i].onclick = (event) => {
-//             $("popup").setStyle({
-//                 display: "none"
-//             });
-//             var id = event.target.getAttribute("id").substring(1);
-//             new Ajax.Request("/api/restaruants/" + id,{
-//                 method: "GET",
-//                 onSuccess: moveStore,
-//                 onFailure: ajaxFailed,
-//                 onException: ajaxFailed
-//             });
-//         }
-//     }
-// }
+function removeElements(query) {
+    while ($$(query)[0].firstChild){
+        $$(query)[0].removeChild($$(query)[0].firstChild);
+    }
+}
 
 
 function ajaxFailed(ajax, exception) {

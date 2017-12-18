@@ -1,5 +1,4 @@
 window.onload = () => {
-    console.log(132123);
     $("drawer-toggle").onclick = setOpened;
     $("blocker").onclick = removeOpened;
     $("jebi").onclick = jebi;
