@@ -6,7 +6,7 @@
     
     $password = hash('sha256', $_POST['password']);
 
-    $query = $db->query("SELECT password FROM reply WHERE id=".$_POST['id'])->fetchAll()[0];
+    $query = $db->query("SELECT password FROM reply WHERE id=".$args['id'])->fetchAll()[0];
     if($query['password'] != $password) {
         echo json_encode(array(
             'success' => false,
