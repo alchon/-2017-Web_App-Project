@@ -1,4 +1,5 @@
 var map = document.createElement("div");
+map.setAttribute("class", "map")
 map.innerHTML = `<svg version="1.1" id="layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
      y="0px" width="814.382px" height="927px" viewBox="0 0 814.382 927" enable-background="new 0 0 814.382 927"
      xml:space="preserve">
@@ -145,7 +146,7 @@ function draw_map() {
         method: "get",
         onSuccess: (ajax) => {
             stores = JSON.parse(ajax.responseText);
-            removeElements();
+            removeElements(".map");
             for(var i = 0; i < stores.length; i++) {
                 var item = stores[i];
                 const rect = document.createElement('rect');
@@ -237,7 +238,7 @@ function moveStore(ajax) {
     var info = JSON.parse(ajax.responseText);
     var store = info.store;
     var menus = info.menus;
-    removeElements();
+    removeElements("main");
 
     console.log(info);
 
@@ -383,9 +384,9 @@ function function_name(id) {
     });
 }
 
-function removeElements() {
-    while ($$("main")[0].firstChild){
-        $$("main")[0].removeChild($$("main")[0].firstChild);
+function removeElements(query) {
+    while ($$(query)[0].firstChild){
+        $$(query)[0].removeChild($$(query)[0].firstChild);
     }
 }
 
