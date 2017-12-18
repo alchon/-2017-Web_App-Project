@@ -351,7 +351,7 @@ function function_name(id) {
     });
 }
 
-function load_comment(comments) {
+function load_comment(replys) {
     const divs = document.getElementsByClassName('reply')[0]
     for (var i = 0; i < replys.length; i++) {
         var div = document.createElement("div");
