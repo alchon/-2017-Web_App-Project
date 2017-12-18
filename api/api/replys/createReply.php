@@ -9,10 +9,10 @@
     $contents = $_POST['contents'];
     $created = time();
 
-    $query = "INSERT INTO reply(store_id, username, password, reply, created) VALUES(':store_id', ':username', ':password', ':reply', ':created')";
+    $query = "INSERT INTO reply(store_id, username, password, reply, created) VALUES(:store_id, ':username', ':password', ':reply', ':created')";
         
     $stmt = $db->prepare($query);
-    $stmt->bindParam(':store_id', $_POST['store_id']);
+    $stmt->bindParam(':store_id', intval( $_POST['store_id']));
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':password', $_password);
     $stmt->bindParam(':reply', $contents);
