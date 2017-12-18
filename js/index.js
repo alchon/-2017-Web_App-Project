@@ -393,18 +393,14 @@ function submit_reply() {
             password: password,
             contents: contents
         },
-        onSuccess: refresh_reply,
+        onSuccess: new Ajax.Request('/api/replys/' + store_id, {
+            method: 'GET', 
+            onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
+            onFailure: ajaxFailed
+        }),
         onFailure: ajaxFailed
     })
     return false;
-}
-
-function refresh_reply(ajax) {
-    new Ajax.Request('/api/replys/' + store_id, {
-        method: 'GET', 
-        onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
-        onFailure: ajaxFailed
-    })
 }
 
 function removeElements(query) {
