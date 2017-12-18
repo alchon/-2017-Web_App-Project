@@ -1,6 +1,6 @@
 var map;
 window.onload = () => {
-
+    map = document.querySelector("svg#layer_1");
     $("search").onclick = () => {
         new Ajax.Request("/api/restaruants/search",{
             method: "POST",
@@ -17,24 +17,23 @@ window.onload = () => {
 }
 
 function successSearch(ajax) {
+    if (!document.querySelector("svg#layer_1")) { draw_map(); }
     const restaruants = JSON.parse(ajax.responseText);
     const rects = $$('rect.box');
     for(var i = 0; i < rects.length; i++) {
         var item = rects[i];
+        document.getElementById(item.id).classList.remove("selected");
         if(restaruants.indexOf(item.id.substring(1)) != -1) {
             document.getElementById(item.id).classList.add('search');
         } else {
             document.getElementById(item.id).classList.remove('search');
         }
     }
-    var element = document.querySelector("svg#layer_1");
-    var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
-    element.innerHTML = ''
-    element.innerHTML = newHTML;
     event_handling();
 }
 
 function getGeoLocation() {
+    if (!document.querySelector("svg#layer_1")) { draw_map(); }
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((success) => {
             console.log(success);
@@ -49,17 +48,13 @@ function getGeoLocation() {
                     const rects = $$('rect.box');
                     for(var i = 0; i < rects.length; i++) {
                         var item = rects[i];
+                        document.getElementById(item.id).classList.remove('search');
                         if(restaruants.indexOf(item.id.substring(1)) != -1) {
                             document.getElementById(item.id).classList.add('selected');
                         } else {
                             document.getElementById(item.id).classList.remove('selected');
                         }
                     }
-                    // var element = document.querySelector("svg#layer_1");
-                    // var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
-                    // element.innerHTML = ''
-                    // element.innerHTML = newHTML;
-                    // event_handling();
                 },
                 onFailure: ajaxFailed,
                 onException: ajaxFailed
@@ -95,9 +90,9 @@ function draw_map() {
                 }
                 rect.classList.add('box');
                 rect.id = ('b' + item.ID);
-                document.querySelector('svg#layer_1').appendChild(rect);
+                map.appendChild(rect);
             }
-            var element = document.querySelector("svg#layer_1");
+            var element = map;
             var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
             element.innerHTML = ''
             element.innerHTML = newHTML;
