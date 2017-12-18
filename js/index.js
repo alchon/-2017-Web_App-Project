@@ -392,22 +392,23 @@ function delete_reply(e) {
         return;
     }
     var selected_id = e.target.getAttribute('your-id');
-    new Ajax.Request('/api/replys/' + store_id + '/' + selected_id, {
-        method: 'DELETE', 
-        onSuccess: (ajax) => {
-            const result = JSON.parse(ajax.responseText);
-            if(result.success) {
-                new Ajax.Request('/api/replys/' + store_id, {
-                    method: 'GET', 
-                    onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
-                    onFailure: ajaxFailed
-                })
-            } else {
-                alert('비밀번호가 틀립니다');
-            }
-        },
-        onFailure: ajaxFailed,
-        onException: ajaxFailed
+    axios.delete('/api/replys/' + store_id + '/' + selected_id, {
+        password: input_password
+    })
+    .then((ajax) => {
+        const result = ajax.data;
+        if(result.success) {
+            new Ajax.Request('/api/replys/' + store_id, {
+                method: 'GET', 
+                onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
+                onFailure: ajaxFailed
+            })
+        } else {
+            alert('비밀번호가 틀립니다');
+        }
+    })
+    .catch((err) => {
+        ajaxFailed(null, err)
     })
 }
 
