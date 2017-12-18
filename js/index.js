@@ -13,6 +13,7 @@ window.onload = () => {
     $("blocker").onclick = removeOpened;
     $("jebi").onclick = jebi;
     $("erwc").onclick = erwc;
+    $("logo").onclick = logoClick;
 
     map = document.querySelector("svg#layer_1");
     $("search").onclick = () => {
@@ -28,6 +29,10 @@ window.onload = () => {
     $("geolocation").onclick = getGeoLocation;
 
     draw_map();
+}
+
+function logoClick() {
+    location.reload();
 }
 
 function setOpened() {
