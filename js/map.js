@@ -1,4 +1,5 @@
-var map = `            <svg version="1.1" id="layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+var map = document.createElement("div");
+map.innerHTML = `<svg version="1.1" id="layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
      y="0px" width="814.382px" height="927px" viewBox="0 0 814.382 927" enable-background="new 0 0 814.382 927"
      xml:space="preserve">
                 <rect x="436.629" y="158.833" fill="#A9CA9A" stroke="#000000" stroke-miterlimit="10" width="151.954" height="62.333"/>
