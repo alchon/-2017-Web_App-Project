@@ -405,7 +405,9 @@ function delete_reply(e) {
             } else {
                 alert('비밀번호가 틀립니다');
             }
-        }
+        },
+        onFailure: ajaxFailed,
+        onException: ajaxFailed
     })
 }
 
