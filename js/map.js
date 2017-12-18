@@ -75,6 +75,7 @@ function draw_map() {
         method: "get",
         onSuccess: (ajax) => {
             stores = JSON.parse(ajax.responseText);
+            removeElements();
             for(var i = 0; i < stores.length; i++) {
                 var item = stores[i];
                 const rect = document.createElement('rect');
