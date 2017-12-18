@@ -125,7 +125,7 @@ function event_handling() {
                 display: "none"
             });
             var id = event.target.getAttribute("id").substring(1);
-            window.location += "#" + id
+            window.location = "#" + id
             new Ajax.Request("/api/restaruants/" + id,{
                 method: "GET",
                 onSuccess: moveStore,
@@ -161,7 +161,6 @@ function popupRefresh(x, y) {
         left:x
     });
 }
-
 
 function moveStore(ajax) {
     var info = JSON.parse(ajax.responseText);
@@ -313,7 +312,11 @@ function function_name(id) {
     });
 }
 
-
+function removeElements() {
+    while ($$("main")[0].firstChild){
+        $$("main")[0].removeChild($$("main")[0].firstChild);
+    }
+}
 
 function ajaxFailed(ajax, exception) {
     var errorMessage = "Error making Ajax request:\n\n";
