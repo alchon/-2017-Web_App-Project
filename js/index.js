@@ -369,9 +369,9 @@ function load_comment(replys) {
         img.setAttribute('alt', 'DeleteReply');
         img.setStyle({
             float: 'right',
-            width: '100%'
+            width: '13px'
         })
-        
+
         div.appendChild(img);
 
         
