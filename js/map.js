@@ -36,10 +36,6 @@ function successSearch(ajax) {
 }
 
 function getGeoLocation() {
-    if (!document.querySelector("svg#layer_1")) {
-        removeElements("main");
-        $$("main")[0].appendChild(map);
-    }
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition((success) => {
             console.log(success);
@@ -50,6 +46,10 @@ function getGeoLocation() {
                     lng: success.coords.longitude
                 },
                 onSuccess: (ajax) => {
+                    if (!document.querySelector("svg#layer_1")) {
+                        removeElements("main");
+                        $$("main")[0].appendChild(map);
+                    }
                     const restaruants = JSON.parse(ajax.responseText);
                     const rects = $$('rect.box');
                     for(var i = 0; i < rects.length; i++) {
