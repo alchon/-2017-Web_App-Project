@@ -362,10 +362,6 @@ function load_comment(replys) {
         var d  = new Date(Number.parseFloat(replys[i].created) * 1000);
         div.innerText = replys[i].username + '님 (' + d.getMonth() + '월 ' + d.getDay() + ' 일) : ' + replys[i].reply
 
-        div.appendChild(username);
-        div.appendChild(created);
-        div.appendChild(reply);
-
         document.getElementById('reply-area').appendChild(div);
         document.getElementById('reply-area').appendChild(hr);
     }
