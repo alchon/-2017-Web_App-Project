@@ -316,6 +316,10 @@ function function_name(id) {
             hr.setAttribute("class", "menu-hr");
             $$(".body")[0].appendChild(hr);
 
+            const reply_area = document.createElement('div');
+            reply_area.id = 'reply-area';
+            divs.appendChild(reply_area);
+
             $$(".body")[0].appendChild(divs);
 
             var form = document.createElement("div");
@@ -351,6 +355,7 @@ function function_name(id) {
 }
 
 function load_comment(replys) {
+    document.getElementById('reply-area').innerHTML = ''
     for (var i = 0; i < replys.length; i++) {
         var div = document.createElement("div");
         div.setAttribute("class", "reply");
@@ -370,8 +375,8 @@ function load_comment(replys) {
         div.appendChild(created);
         div.appendChild(reply);
 
-        document.getElementsByClassName('replys')[0].appendChild(div);
-        document.getElementsByClassName('replys')[0].appendChild(hr);
+        document.getElementById('reply-area').appendChild(div);
+        document.getElementById('reply-area').appendChild(hr);
     }
 }
 
