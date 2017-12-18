@@ -362,20 +362,16 @@ function load_comment(replys) {
         var hr = document.createElement("hr");
 
         div.setAttribute("class", "reply");
-        const span = document.createElement('span');
-        span.innerText = replys[i].username + '님 (' + d.getMonth() + '월 ' + d.getDay() + ' 일) : ' + replys[i].reply
-        span.style = {
-            float: 'left'
-        }
+        div.innerText = replys[i].username + '님 (' + d.getMonth() + '월 ' + d.getDay() + ' 일) : ' + replys[i].reply
 
         const img = document.createElement('img');
         img.setAttribute('src', '/img/x-mark.png');
         img.setAttribute('alt', 'DeleteReply');
-        img.style = {
+        img.setStyle({
             float: 'right',
             width: '100%'
-        }
-        div.appendChild(span);
+        })
+        
         div.appendChild(img);
 
         
