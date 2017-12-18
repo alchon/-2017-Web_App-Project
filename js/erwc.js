@@ -103,7 +103,7 @@ function finalize() {
                 a = '야식';
             }
             // $('round').innerText = JSON.parse(ajax.responseText).store.name
-            alert('야호! 오늘' + a + '은 ' + JSON.parse(ajax.responseText).store.name + '이다!');
+            alert('야호! 오늘 ' + a + '은 ' + JSON.parse(ajax.responseText).store.name + '(이)닭!');
         }
     })
 }
