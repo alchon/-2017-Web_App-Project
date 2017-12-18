@@ -331,10 +331,9 @@ function function_name(id) {
             var contents = document.createElement("textarea");
             contents.setAttribute("name", "contents");
             contents.setAttribute("id", "contents");
-            var submit = document.createElement("input");
-            submit.setAttribute("type", "submit");
-
-            form.onsubmit = submit_reply
+            var submit = document.createElement("button");
+            submit.innerText = '댓글 작성';
+            submit.onclick = submit_reply
 
             form.appendChild(username);
             form.appendChild(password);
