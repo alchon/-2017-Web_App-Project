@@ -359,18 +359,8 @@ function load_comment(replys) {
     for (var i = 0; i < replys.length; i++) {
         var div = document.createElement("div");
         div.setAttribute("class", "reply");
-
-        var username = document.createElement("span");
-        username.innerText = replys[i].username;
-        username.setAttribute("class", "username");
-        var reply = document.createElement("span");
-        reply.innerText = replys[i].reply;
-        reply.setAttribute("class", "reply");
-        var created = document.createElement("span");
+        div.innerText = replys[i].username + '님 (' + d.getMonth() + '월 ' + d.getDay() + ' 일) : ' + replys[i].reply
         var d  = new Date(Number.parseFloat(replys[i].created) * 1000);
-        created.innerText = d.getMonth() + '월 ' + d.getDay() + ' 일';
-        created.setAttribute("class", "created");
-        var hr = document.createElement("hr");
 
         div.appendChild(username);
         div.appendChild(created);
