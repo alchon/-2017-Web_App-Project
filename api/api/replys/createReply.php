@@ -10,6 +10,7 @@
     $created = time();
 
     $query = "INSERT INTO reply(store_id, username, password, reply, created) VALUES(':store_id', ':username', ':password', ':reply', ':created')";
+        
     $stmt = $db->prepare($query);
     $stmt->bindParam(':store_id', $_POST['store_id']);
     $stmt->bindParam(':username', $username);
@@ -19,9 +20,14 @@
 
     $stmt->debugDumpParams();
     
-    $result = $stmt->execute();
+    $result = array(
+        'success' => $stmt->execute()
+    );
     $stmt->closeCursor();
-    echo json_encode(array(
-        'success' => $result
-    ));
+    
+    if(!$result['success']) {
+        $result['err_code'] = $stmt->errorCode();
+        $result['err_info'] = $stmt->errorInfo();
+    }
+    echo json_encode($result);
 ?>
