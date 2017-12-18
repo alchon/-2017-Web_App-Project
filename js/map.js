@@ -2,13 +2,14 @@ var map;
 window.onload = () => {
 
     $("search").onclick = () => {
-    new Ajax.Request("/api/restaruants/search",{
-        method: "POST",
-        parameters: {query: $("text").value},
-        onSuccess: successSearch,
-        onFailure: ajaxFailed,
-        onException: ajaxFailed
-    });
+        new Ajax.Request("/api/restaruants/search",{
+            method: "POST",
+            parameters: {query: $("text").value},
+            onSuccess: successSearch,
+            onFailure: ajaxFailed,
+            onException: ajaxFailed
+        });
+    }
 
     $("geolocation").onclick = getGeoLocation;
 
@@ -176,3 +177,4 @@ function ajaxFailed(ajax, exception) {
     }
     console.log(errorMessage);
 }
+
