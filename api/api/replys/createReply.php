@@ -8,17 +8,18 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
     $password = hash('sha256', $password);
+    echo $password;
     $contents = $_POST['contents'];
     $created = time();
 
     $query = "INSERT INTO reply(store_id, username, password, reply, created) VALUES(:store_id, :username, :password, :reply, :created)";
         
     $stmt = $db->prepare($query);
-    $stmt->bindValue(':store_id', $store_id);
-    $stmt->bindValue(':username', $username);
-    $stmt->bindValue(':password', $_password);
-    $stmt->bindValue(':reply', $contents);
-    $stmt->bindValue(':created', $created);
+    $stmt->bindParam(':store_id', $store_id);
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':password', $_password);
+    $stmt->bindParam(':reply', $contents);
+    $stmt->bindParam(':created', $created);
 
     $stmt->debugDumpParams();
     
