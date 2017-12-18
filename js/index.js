@@ -296,6 +296,7 @@ function moveStore(ajax) {
 }
 
 function function_name(id) {
+    document.attributes.document_id = id;
     new Ajax.Request("/api/replys/" + id, {
         method: "GET",
         onSuccess: (ajax) => {
@@ -303,28 +304,6 @@ function function_name(id) {
             console.log(replys);
             var divs = document.createElement("div");
             divs.setAttribute("class", "replys");
-            for (var i = 0; i < replys.length; i++) {
-                var div = document.createElement("div");
-                div.setAttribute("class", "reply");
-
-                var username = document.createElement("span");
-                username.innerText = replys[i].username;
-                username.setAttribute("class", "username");
-                var reply = document.createElement("span");
-                reply.innerText = replys[i].reply;
-                reply.setAttribute("class", "reply");
-                var created = document.createElement("span");
-                created.innerText = replys[i].created;
-                created.setAttribute("class", "created");
-                var hr = document.createElement("hr");
-
-                div.appendChild(username);
-                div.appendChild(created);
-                div.appendChild(reply);
-
-                divs.appendChild(div);
-                divs.appendChild(hr);
-            }
 
             var comments = document.createElement("p");
             comments.setAttribute("id", "comments");
@@ -338,6 +317,7 @@ function function_name(id) {
             $$(".body")[0].appendChild(divs);
 
             var form = document.createElement("form");
+            form.id = 'reply-form'
             var username = document.createElement("input");
             username.setAttribute("type", "text");
             username.setAttribute("name", "username");
@@ -352,15 +332,69 @@ function function_name(id) {
             var submit = document.createElement("input");
             submit.setAttribute("type", "submit");
 
+            form.onsubmit = submit_reply()
+
             form.appendChild(username);
             form.appendChild(password);
             form.appendChild(contents);
             form.appendChild(submit);
             $$(".body")[0].appendChild(form);
+
+            load_comment(replys)
         },
         onFailure: ajaxFailed,
         onException: ajaxFailed
     });
+}
+
+function load_comment(comments) {
+    const divs = document.getElementsByClassName('reply')[0]
+    for (var i = 0; i < replys.length; i++) {
+        var div = document.createElement("div");
+        div.setAttribute("class", "reply");
+
+        var username = document.createElement("span");
+        username.innerText = replys[i].username;
+        username.setAttribute("class", "username");
+        var reply = document.createElement("span");
+        reply.innerText = replys[i].reply;
+        reply.setAttribute("class", "reply");
+        var created = document.createElement("span");
+        created.innerText = replys[i].created;
+        created.setAttribute("class", "created");
+        var hr = document.createElement("hr");
+
+        div.appendChild(username);
+        div.appendChild(created);
+        div.appendChild(reply);
+
+        divs.appendChild(div);
+        divs.appendChild(hr);
+    }
+}
+
+function submit_reply() {
+    const username = document.getElementById('username').value
+    const password = document.getElementById('username').value
+    const contents = document.getElementById('username').value
+    
+    new Ajax.Request('/api/replys' , {
+        method: 'POST',
+        parameters: {
+            store_id: document.attributes.document_id,
+            username: username,
+            password: password,
+            contents: contents
+        },
+        onSuccess: () => {
+            new Ajax.Request('/api/replys/' + document.attributes.document_id, {
+                method: 'GET', 
+                onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
+                onFailure: ajaxFailed
+            })
+        },
+        onFailure: ajaxFailed
+    })
 }
 
 function removeElements(query) {
