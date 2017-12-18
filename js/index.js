@@ -358,8 +358,10 @@ function load_comment(replys) {
     document.getElementById('reply-area').innerHTML = ''
     for (var i = 0; i < replys.length; i++) {
         var div = document.createElement("div");
-        div.setAttribute("class", "reply");
         var d  = new Date(Number.parseFloat(replys[i].created) * 1000);
+        var hr = document.createElement("hr");
+
+        div.setAttribute("class", "reply");
         div.innerText = replys[i].username + '님 (' + d.getMonth() + '월 ' + d.getDay() + ' 일) : ' + replys[i].reply
 
         document.getElementById('reply-area').appendChild(div);
