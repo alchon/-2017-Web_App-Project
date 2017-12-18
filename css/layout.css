@@ -10,6 +10,14 @@ button {
     border-radius: 0 0;
 }
 
+form button {
+    width: 100%;
+    color: black;
+    border: none;
+    border-radius: 0 0;
+    font-size: 25px;
+}
+
 header {
     display: flex;
     text-align: center;
