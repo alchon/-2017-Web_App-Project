@@ -409,7 +409,7 @@ function removeElements(query) {
 function ajaxFailed(ajax, exception) {
     var errorMessage = "Error making Ajax request:\n\n";
     if (exception) {
-        errorMessage += "Exception: " + exception + " on line " + exception.lineNUmber;
+        errorMessage += "Exception: " + exception + " on line " + exception.lineNumber;
     } else {
         errorMessage += "Server status:\n" + ajax.status + " " + ajax.statusText + 
                         "\n\nServer response text:\n" + ajax.responseText;
