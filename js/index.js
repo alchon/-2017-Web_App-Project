@@ -1,5 +1,13 @@
 var stores;
 var map;
+var previous;
+window.onpageshow = (event) => {
+    if (event.persisted && previous) {
+        removeElements("main");
+        $$("main")[0].appendChild(previous);
+    }
+}
+
 window.onload = () => {
     $("drawer-toggle").onclick = setOpened;
     $("blocker").onclick = removeOpened;
@@ -203,6 +211,7 @@ function moveStore(ajax) {
     var info = JSON.parse(ajax.responseText);
     var store = info.store;
     var menus = info.menus;
+    previous = $$("main")[0].firstChild;
     removeElements("main");
 
     console.log(info);
