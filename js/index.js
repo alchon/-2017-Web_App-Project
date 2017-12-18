@@ -367,12 +367,13 @@ function load_comment(replys) {
         const img = document.createElement('img');
         img.setAttribute('src', '/img/x-mark.png');
         img.setAttribute('alt', 'DeleteReply');
+        img.setAttribute('your-id', replys[i].id)
         img.setStyle({
             float: 'right',
             width: '13px'
         })
 
-        img.onclick = () => delete_reply(replys[i].id)
+        img.onclick = delete_reply
 
         div.appendChild(img);
 
@@ -382,12 +383,14 @@ function load_comment(replys) {
     }
 }
 
-function delete_reply(id) {
+
+function delete_reply(e) {
     const input_password = prompt('Type your password')
     if(!input_password) {
         return;
     }
-    new Ajax.Request('/api/replys/' + store_id + '/' + id, {
+    var selected_id = e.target.getAttribute('your-id');
+    new Ajax.Request('/api/replys/' + store_id + '/' + selected_id, {
         method: 'DELETE', 
         onSuccess: (ajax) => {
             const result = JSON.parse(ajax.responseText);
