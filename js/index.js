@@ -334,7 +334,7 @@ function function_name(id) {
             var submit = document.createElement("input");
             submit.setAttribute("type", "submit");
 
-            form.onsubmit = submit_reply()
+            form.onsubmit = () => submit_reply
 
             form.appendChild(username);
             form.appendChild(password);
