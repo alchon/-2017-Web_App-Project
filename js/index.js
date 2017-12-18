@@ -367,7 +367,8 @@ function load_comment(replys) {
         reply.innerText = replys[i].reply;
         reply.setAttribute("class", "reply");
         var created = document.createElement("span");
-        created.innerText = replys[i].created;
+        var d  = new Date(Number.parseFloat(replys[i].created) * 1000);
+        created.innerText = d.getMonth() + '월 ' + d.getDay() + ' 일';
         created.setAttribute("class", "created");
         var hr = document.createElement("hr");
 
