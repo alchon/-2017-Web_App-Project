@@ -340,6 +340,8 @@ function function_name(id) {
             form.appendChild(password);
             form.appendChild(contents);
             form.appendChild(submit);
+
+            console.log(form);
             $$(".body")[0].appendChild(form);
 
             load_comment(replys)
