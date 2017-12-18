@@ -1,6 +1,8 @@
 var stores;
 var map;
 var previous;
+
+let store_id;
 window.onpageshow = (event) => {
     if (event.persisted && previous) {
         removeElements("main");
@@ -296,7 +298,7 @@ function moveStore(ajax) {
 }
 
 function function_name(id) {
-    document.document_id = id;
+    store_id = id;
     new Ajax.Request("/api/replys/" + id, {
         method: "GET",
         onSuccess: (ajax) => {
@@ -375,19 +377,19 @@ function load_comment(comments) {
 
 function submit_reply() {
     const username = document.getElementById('username').value
-    const password = document.getElementById('username').value
-    const contents = document.getElementById('username').value
+    const password = document.getElementById('password').value
+    const contents = document.getElementById('contents').value
     
     new Ajax.Request('/api/replys' , {
         method: 'POST',
         parameters: {
-            store_id: document.document_id,
+            store_id: store_id ,
             username: username,
             password: password,
             contents: contents
         },
         onSuccess: () => {
-            new Ajax.Request('/api/replys/' + document.document_id, {
+            new Ajax.Request('/api/replys/' + store_id, {
                 method: 'GET', 
                 onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
                 onFailure: ajaxFailed
