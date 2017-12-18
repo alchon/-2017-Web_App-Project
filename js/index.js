@@ -386,7 +386,9 @@ function load_comment(replys) {
 
 function delete_reply(e) {
     const input_password = prompt('Type your password')
+    console.log(input_password);
     if(!input_password) {
+        console.log('No password')
         return;
     }
     var selected_id = e.target.getAttribute('your-id');
