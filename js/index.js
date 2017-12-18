@@ -233,7 +233,7 @@ function moveStore(ajax) {
     pictrue.setAttribute("class", "pictrue");
 
     var img = document.createElement("img");
-    img.setAttribute("src", "http://placehold.it/360x360");
+    img.setAttribute("src", "https://placehold.it/360x360");
     img.setAttribute("class", "main");
 
     var txt = document.createElement("div");
@@ -318,7 +318,7 @@ function function_name(id) {
 
             $$(".body")[0].appendChild(divs);
 
-            var form = document.createElement("form");
+            var form = document.createElement("div");
             form.id = 'reply-form'
             var username = document.createElement("input");
             username.setAttribute("type", "text");
@@ -389,13 +389,16 @@ function submit_reply() {
             password: password,
             contents: contents
         },
-        onSuccess: () => {
-            new Ajax.Request('/api/replys/' + store_id, {
-                method: 'GET', 
-                onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
-                onFailure: ajaxFailed
-            })
-        },
+        onSuccess: refresh_reply,
+        onFailure: ajaxFailed
+    })
+    return false;
+}
+
+function refresh_reply(ajax) {
+    new Ajax.Request('/api/replys/' + store_id, {
+        method: 'GET', 
+        onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
         onFailure: ajaxFailed
     })
 }
