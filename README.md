@@ -23,6 +23,7 @@ Our project informs about restaurants.
 ## Features  
 - Search restaurants based on name or category.  
 - Find nearby restaurants based on my location.  
+- Write comments each restaurants.  
 - You can get recommended restaurants by drawing lots.  
 - Restaurants world cup.  
 
