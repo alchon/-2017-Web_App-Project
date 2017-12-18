@@ -10,7 +10,7 @@
     $contents = $_POST['contents'];
     $created = time();
 
-    $query = "INSERT INTO reply(store_id, username, password, reply, created) VALUES(:store_id, ':username', ':password', ':reply', ':created')";
+    $query = "INSERT INTO reply(store_id, username, password, reply, created) VALUES(:store_id, :username, :password, :reply, :created)";
         
     $stmt = $db->prepare($query);
     $stmt->bindParam(':store_id', $store_id);
