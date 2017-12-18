@@ -4,6 +4,7 @@
 
     header('Content-Type: application/json');
     
+    $store_id = intval($_POST['store_id']);
     $username = $_POST['username'];
     $password = hash('sha256', $_POST['password']);
     $contents = $_POST['contents'];
@@ -12,7 +13,7 @@
     $query = "INSERT INTO reply(store_id, username, password, reply, created) VALUES(:store_id, ':username', ':password', ':reply', ':created')";
         
     $stmt = $db->prepare($query);
-    $stmt->bindParam(':store_id', intval( $_POST['store_id']));
+    $stmt->bindParam(':store_id', $store_id);
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':password', $_password);
     $stmt->bindParam(':reply', $contents);
