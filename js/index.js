@@ -352,7 +352,6 @@ function function_name(id) {
 }
 
 function load_comment(replys) {
-    const divs = document.getElementsByClassName('reply')[0]
     for (var i = 0; i < replys.length; i++) {
         var div = document.createElement("div");
         div.setAttribute("class", "reply");
@@ -372,8 +371,8 @@ function load_comment(replys) {
         div.appendChild(created);
         div.appendChild(reply);
 
-        divs.appendChild(div);
-        divs.appendChild(hr);
+        document.getElementsByClassName('reply')[0].appendChild(div);
+        document.getElementsByClassName('reply')[0].appendChild(hr);
     }
 }
 
