@@ -16,6 +16,8 @@
     $stmt->bindParam(':password', $_password);
     $stmt->bindParam(':reply', $contents);
     $stmt->bindParam(':created', $created);
+
+    $stmt->debugDumpParams();
     
     $stmt->execute();
     
