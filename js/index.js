@@ -359,8 +359,8 @@ function load_comment(replys) {
     for (var i = 0; i < replys.length; i++) {
         var div = document.createElement("div");
         div.setAttribute("class", "reply");
-        div.innerText = replys[i].username + '님 (' + d.getMonth() + '월 ' + d.getDay() + ' 일) : ' + replys[i].reply
         var d  = new Date(Number.parseFloat(replys[i].created) * 1000);
+        div.innerText = replys[i].username + '님 (' + d.getMonth() + '월 ' + d.getDay() + ' 일) : ' + replys[i].reply
 
         div.appendChild(username);
         div.appendChild(created);
