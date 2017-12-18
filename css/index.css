@@ -168,13 +168,9 @@ main {
     bottom: 20%;
 } */
 
-.map svg {
+svg {
     width: 60%;
     margin: 0 auto;
-}
-.map {
-    display: flex;
-    align-items: center;
 }
 
 #popup {
