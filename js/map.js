@@ -93,10 +93,10 @@ function draw_map() {
                 rect.id = ('b' + item.ID);
                 map.appendChild(rect);
             }
-            var element = map;
-            var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
-            element.innerHTML = ''
-            element.innerHTML = newHTML;
+            var newmap = map.innerHTML.substring(0, map.innerHTML.length);
+            map.innerHTML = ''
+            map.innerHTML = newmap;
+            $$("main")[0].appendChild(map);
             event_handling();
         },
         onFailure: ajaxFailed,
