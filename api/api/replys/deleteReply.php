@@ -4,8 +4,9 @@
 
     header('Content-Type: application/json');
     
-    print_r(file_get_contents("php://input"));
-    $password = hash('sha256', $_DELETE['password']);
+    $req = array();
+    preg_match("/password=.+/",file_get_contents("php://input"),$req);
+    $password = hash('sha256', str_replace('&', '', $req[0]));
 
     $query = $db->query("SELECT password FROM reply WHERE id=".$args['id'])->fetchAll()[0];
     echo $password + '\n';
