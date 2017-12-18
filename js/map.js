@@ -1,6 +1,75 @@
-var map;
+var map = `            <svg version="1.1" id="layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+     y="0px" width="814.382px" height="927px" viewBox="0 0 814.382 927" enable-background="new 0 0 814.382 927"
+     xml:space="preserve">
+                <rect x="436.629" y="158.833" fill="#A9CA9A" stroke="#000000" stroke-miterlimit="10" width="151.954" height="62.333"/>
+                <rect x="436.629" y="232.065" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="151.954" height="72.861"/>
+                <rect x="601.337" y="158.833" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="212.545" height="146.093"/>
+                <rect x="436.629" y="315.825" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="151.954" height="69.849"/>
+                <rect x="601.337" y="315.825" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="212.545" height="69.849"/>
+                <rect x="436.629" y="397.744" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="151.954" height="81.115"/>
+                <rect x="601.337" y="397.744" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="212.545" height="81.115"/>
+                
+                <rect x="601.337" y="490.561" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="212.545" height="39.261"/>
+                <rect x="601.337" y="113.266" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="212.545" height="34.668"/>
+                <rect x="436.629" y="113.266" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="151.954" height="34.668"/>
+                <rect x="211.713" y="0.5" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="184.094" height="37.768"/>
+                <rect x="0.5" y="0.5" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="199.653" height="37.768"/>
+                <rect x="0.5" y="49.167" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="33.975" height="96.333"/>
+                <rect x="47.229" y="49.166" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="72.508" height="96.333"/>
+                <rect x="131.297" y="49.167" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="68.856" height="96.333"/>
+                <rect x="211.713" y="49.167" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="65.22" height="96.333"/>
+                <rect x="436.629" y="490.561" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="151.954" height="39.261"></rect>
+                <rect x="436.629" y="570.5" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="275.331" height="70.184"/>
+                <rect x="724.714" y="652.385" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="89.168" height="66.747"/>
+                <rect x="436.629" y="652.385" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="275.331" height="66.747"/>
+                <rect x="724.714" y="570.5" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="89.168" height="70.184"></rect>
+                <rect x="436.629" y="730.833" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="275.331" height="65.3"></rect>                <rect x="724.714" y="730.833" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="89.168" height="195.667"/>
+                <rect x="436.629" y="807.834" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="214.332" height="60.999"></rect>
+                <rect x="436.629" y="880.534" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="275.331" height="45.966"/>
+                <rect x="276.641" y="866.534" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="119.167" height="59.966"/>
+                <rect x="113.39" y="866.534" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="151.69" height="59.966"/>
+                <rect x="0.5" y="866.534" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="101.33" height="59.966"/>
+                <rect x="69.932" y="643.534" fill="#A9CA9A" stroke="#000000" stroke-miterlimit="10" width="76.69" height="44.299"/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="58.372,687.833 58.372,631.833 158.182,631.833
+                    158.182,687.833 226.807,687.833 226.807,570.5 0.5,570.5 0.5,687.833 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="312.747,652.385 288.081,652.385 288.081,570.5
+                    238.367,570.5 238.367,687.833 312.747,687.833 "/>
+                <rect x="299.641" y="570.5" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="96.167" height="70.184"/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="288.494,145.794 288.494,49.166 395.807,49.166
+                    395.807,221.167 364.317,221.167 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="329.275,203.191 358.148,232.065 395.807,232.065
+                    395.807,304.926 340.268,304.926 283.904,248.563 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="275.596,256.871 223.569,308.897 300.346,385.674
+                    395.807,385.674 395.807,315.825 334.549,315.825 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="395.807,478.859 395.807,397.744 295.799,397.744
+                    215.261,317.206 164.11,368.357 274.613,478.859 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="197.896,418.761 269.696,490.561 395.807,490.561
+                    395.807,529.821 159.781,529.821 159.781,456.877 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="189.588,410.452 155.802,376.666 68.312,464.156
+                    91.682,487.525 91.682,529.821 148.221,529.821 148.221,451.82 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="275.596,240.255 211.713,176.373 211.713,158.833
+                    284.917,158.833 320.967,194.884 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="267.288,248.563 215.261,300.589 131.297,216.626
+                    131.297,158.833 200.153,158.833 200.153,181.429 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="155.802,360.049 206.953,308.897 119.737,221.682
+                    119.737,158.833 47.229,158.833 47.229,251.477 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="72.025,364.333 107.747,328.611 34.475,255.339
+                    34.475,158.833 0.5,158.833 0.5,364.333 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="0.5,438.602 42.756,438.602 60.003,455.848
+                    147.493,368.357 116.055,336.919 77.743,375.231 0.5,375.231 "/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="80.122,529.821 80.122,492.583 37.038,449.5 0.5,449.5
+                    0.5,529.821 "/>
+                <rect x="650.961" y="807.834" fill="#A9CA9A" stroke="#000000" stroke-miterlimit="10" width="60.999" height="60.999"/>
+                <rect x="436.629" y="0.5" fill="none" width="377.253" height="96.833"/>
+                <text transform="matrix(1 0 0 1 523.2671 55.0605)"><tspan x="0" y="0" font-family="'AdobeMyungjoStd-Medium-KSCpc-EUC-H'" font-size="62">ERICA</tspan><tspan x="16.345" y="40.8" font-family="'AdobeMyungjoStd-Medium-KSCpc-EUC-H'" font-size="34">restaurant</tspan></text>
+                <circle fill="#A9CA9A" stroke="#000000" stroke-miterlimit="10" cx="416.193" cy="550.116" r="20.384"/>
+                <rect x="0.5" y="699.534" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="202.553" height="74.299"/>
+                <polygon fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" points="215.807,773.833 395.807,773.833 395.807,652.385
+                    324.307,652.385 324.307,699.534 215.807,699.534 "/>
+                <rect x="215.807" y="785.534" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="180" height="69.299"/>
+                <rect x="0.5" y="785.534" fill="#F8F6F1" stroke="#000000" stroke-miterlimit="10" width="202.553" height="69.299"/>
+            </svg>`;
 window.onload = () => {
-    map = document.querySelector("svg#layer_1");
     $("search").onclick = () => {
         new Ajax.Request("/api/restaruants/search",{
             method: "POST",
