@@ -1,6 +1,79 @@
+var map;
 window.onload = () => {
+
+    $("search").onclick = () => {
+    new Ajax.Request("/api/restaruants/search",{
+        method: "POST",
+        parameters: {query: $("text").value},
+        onSuccess: successSearch,
+        onFailure: ajaxFailed,
+        onException: ajaxFailed
+    });
+
     $("geolocation").onclick = getGeoLocation;
 
+    draw_map();
+}
+
+function successSearch(ajax) {
+    const restaruants = JSON.parse(ajax.responseText);
+    const rects = $$('rect.box');
+    for(var i = 0; i < rects.length; i++) {
+        var item = rects[i];
+        if(restaruants.indexOf(item.id.substring(1)) != -1) {
+            document.getElementById(item.id).classList.add('search');
+        } else {
+            document.getElementById(item.id).classList.remove('search');
+        }
+    }
+    var element = document.querySelector("svg#layer_1");
+    var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
+    element.innerHTML = ''
+    element.innerHTML = newHTML;
+    event_handling();
+}
+
+function getGeoLocation() {
+    if('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition((success) => {
+            console.log(success);
+            new Ajax.Request("/api/restaruants/nearby", {
+                method: "GET", 
+                parameters: {
+                    lat: success.coords.latitude,
+                    lng: success.coords.longitude
+                },
+                onSuccess: (ajax) => {
+                    const restaruants = JSON.parse(ajax.responseText);
+                    const rects = $$('rect.box');
+                    for(var i = 0; i < rects.length; i++) {
+                        var item = rects[i];
+                        if(restaruants.indexOf(item.id.substring(1)) != -1) {
+                            document.getElementById(item.id).classList.add('selected');
+                        } else {
+                            document.getElementById(item.id).classList.remove('selected');
+                        }
+                    }
+                    // var element = document.querySelector("svg#layer_1");
+                    // var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
+                    // element.innerHTML = ''
+                    // element.innerHTML = newHTML;
+                    // event_handling();
+                },
+                onFailure: ajaxFailed,
+                onException: ajaxFailed
+            }
+        );
+        }, (failure) => {
+            console.error(failure);
+        })
+    } else {
+        alert('지오로케이션이 지원되지 않는 환경입니다.');
+        return;
+    }
+}
+
+function draw_map() {
     new Ajax.Request("/api/restaruants/",
     {
         method: "get",
@@ -32,46 +105,6 @@ window.onload = () => {
         onFailure: ajaxFailed,
         onException: ajaxFailed
     });
-}
-
-function getGeoLocation() {
-    if('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition((success) => {
-            console.log(success);
-            new Ajax.Request("/api/restaruants/nearby", {
-                method: "GET", 
-                parameters: {
-                    lat: success.coords.latitude,
-                    lng: success.coords.longitude
-                },
-                onSuccess: (ajax) => {
-                    const restaruants = JSON.parse(ajax.responseText);
-                    const rects = $$('rect.box');
-                    for(var i = 0; i < rects.length; i++) {
-                        var item = rects[i];
-                        if(restaruants.indexOf(item.id.substring(1)) != -1) {
-                            document.getElementById(item.id).classList.add('selected');
-                        } else {
-                            document.getElementById(item.id).classList.remove('selected');
-                        }
-                    }
-                    var element = document.querySelector("svg#layer_1");
-                    var newHTML = element.innerHTML.substring(0, element.innerHTML.length);
-                    element.innerHTML = ''
-                    element.innerHTML = newHTML;
-                    event_handling();
-                },
-                onFailure: ajaxFailed,
-                onException: ajaxFailed
-            }
-        );
-        }, (failure) => {
-            console.error(failure);
-        })
-    } else {
-        alert('지오로케이션이 지원되지 않는 환경입니다.');
-        return;
-    }
 }
 
 function event_handling() {

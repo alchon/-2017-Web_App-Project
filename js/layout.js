@@ -2,16 +2,6 @@ window.onload = () => {
     $("drawer-toggle").onclick = setOpened;
     $("blocker").onclick = removeOpened;
 
-    $("search").onclick = () => {
-        new Ajax.Request("/api/restaruants/search",{
-            method: "POST",
-            parameters: {query: $("text").value},
-            onSuccess: successSearch,
-            onFailure: ajaxFailed,
-            onException: ajaxFailed
-        });
-    }
-
     $("jebi").onclick = jebi;
     $("erwc").onclick = erwc;
 }
