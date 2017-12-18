@@ -370,6 +370,7 @@ function load_comment(replys) {
 
         const img = document.createElement('img');
         img.setAttribute('src', '/img/x-mark.png');
+        img.setAttribute('alt', 'DeleteReply');
         img.style = {
             float: 'right',
             width: '100%'
