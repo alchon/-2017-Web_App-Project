@@ -16,7 +16,7 @@
     float: left;
     background-color: black;
     color: white;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     border: 1px solid black;
     font-size: 40pt;
     display: flex;
