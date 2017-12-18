@@ -6,7 +6,8 @@
     
     $store_id = intval($_POST['store_id']);
     $username = $_POST['username'];
-    $password = hash('sha256', $_POST['password']);
+    $password = $_POST['password'];
+    $password = hash('sha256', $password);
     $contents = $_POST['contents'];
     $created = time();
 
