@@ -17,6 +17,9 @@ When we have a lunch time, we have to think what to eat. As you know this is ver
 So, we thought about list of restaurants in front of the school by category.  
 Our project informs about restaurants.  
 
+## Demo  
+[ERICA_restaurant](https://what-to-eat-erica.duckdns.org:8443/)
+
 ## Features  
 - Search restaurants based on name or category.  
 - Find nearby restaurants based on my location.  
@@ -24,8 +27,39 @@ Our project informs about restaurants.
 - Restaurants world cup.  
 
 ## Execute  
-Click this link to start.    
-[ERICA_restaurant](https://what-to-eat-erica.duckdns.org:8443/)
+Requirements: cURL, PHP7, Apache2, MySQL or MariaDB  
+```
+1. git clone https://github.hub/alchon/ERICA_restaurant.git
+2. cd ERICA_restaurant
+3. cd api/include
+4. curl -sS https://getcomposer.org/installer | php
+5. php composer.phar install
+```  
+Apache2 VirtualHost
+```
+<Directory "Repository directory">
+    Options FollowSymLinks
+    AllowOverride All
+
+    Order allow,deny
+    Allow from all
+</Directory>
+```  
+
+HTTPS 위에서 돌아가야 하는 서비스이므로(현재 위치를 가져오려면 브라우저에서  HTTPS 연결을 강제) 꼭 HTTPS 위에 올려서 쓸 것  
+
+api/include/core.php 
+```
+$dbname, $host, $username. $password -> Modify variables to match server settings
+```  
+api 폴더에 .htaccess 파일이 없을 경우 다음 내용을 담은 .htaccess 파일을 추가 
+```
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
+```
+sql/ dump.sql -> load DB.  
+Put it on the Apache server and run it.  
 
 ## Feedback  
 To report bugs, please create a GitHub issue.  
