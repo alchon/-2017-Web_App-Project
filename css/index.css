@@ -162,10 +162,18 @@ p {
     margin-top: 17px;
     width: 13px;
 }
-.reply {
+.replyarea {
     width: 90%;
     margin: 0 auto;
+}
+.reply {
+    width: 95%;
+    margin: 0 auto;
     line-height: 47px;
+}
+.reply-form {
+    margin: auto;
+    width: 95%;
 }
 input#username {
     display: inline-block;
