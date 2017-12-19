@@ -6,7 +6,7 @@
     
     $req = array();
     
-    $password = json_decode(file_get_contents("php://input"));
+    $password = json_decode(file_get_contents("php://input"), true);
     $password = $password['password'];
     $password = hash('sha256', $password);
 
@@ -28,3 +28,4 @@
         'success' => true
     ));
 ?>
+      
