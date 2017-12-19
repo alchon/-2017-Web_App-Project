@@ -397,7 +397,7 @@ function delete_reply(e) {
     var selected_id = e.target.getAttribute('your-id');
     console.log('/api/replys/' + store_id + '/' + selected_id);
     axios.delete('/api/replys/' + store_id + '/' + selected_id, {
-        params: {
+        data: {
             password: input_password
         }
     })
