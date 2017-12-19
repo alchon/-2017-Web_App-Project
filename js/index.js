@@ -429,11 +429,13 @@ function submit_reply() {
             password: password,
             contents: contents
         },
-        onSuccess:() => new Ajax.Request('/api/replys/' + store_id, {
-            method: 'GET', 
-            onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
-            onFailure: ajaxFailed
-        }),
+        onSuccess:() => {
+            new Ajax.Request('/api/replys/' + store_id, {
+                method: 'GET', 
+                onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
+                onFailure: ajaxFailed
+            })
+        },
         onFailure: ajaxFailed
     })
 }
