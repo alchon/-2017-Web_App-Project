@@ -416,6 +416,7 @@ function delete_reply(e) {
 }
 
 function submit_reply() {
+    console.log('Called');
     const username = document.getElementById('username').value
     const password = document.getElementById('password').value
     const contents = document.getElementById('contents').value
