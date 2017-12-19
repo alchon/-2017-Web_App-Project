@@ -436,7 +436,6 @@ function submit_reply() {
         }),
         onFailure: ajaxFailed
     })
-    return false;
 }
 
 function removeElements(query) {
