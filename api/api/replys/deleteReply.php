@@ -10,8 +10,6 @@
     $password = $password['password'];
     $password = hash('sha256', $password);
 
-    echo $password;
-
     $query = $db->query("SELECT password FROM reply WHERE id=".$args['id'])->fetchAll()[0];
     if($query['password'] != $password) {
         echo json_encode(array(
