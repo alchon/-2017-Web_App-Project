@@ -429,7 +429,8 @@ function submit_reply() {
             password: password,
             contents: contents
         },
-        onSuccess:() => {
+        onSuccess:(ajax) => {
+            console.log(ajax);
             new Ajax.Request('/api/replys/' + store_id, {
                 method: 'GET', 
                 onSuccess: (ajax) => load_comment(JSON.parse(ajax.responseText)),
