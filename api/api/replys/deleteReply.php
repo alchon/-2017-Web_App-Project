@@ -5,9 +5,8 @@
     header('Content-Type: application/json');
     
     $req = array();
-    preg_match('/password=.+&?/', file_get_contents("php://input"), $req);
-    echo file_get_contents("php://input");
-    $password = str_replace('&', '', str_replace('password=', '', $req[0]));
+    
+    $password = json_decode(file_get_contents("php://input"))['password'];
     $password = hash('sha256', $password);
 
     echo $password;
