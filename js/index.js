@@ -395,11 +395,13 @@ function delete_reply(e) {
         return;
     }
     var selected_id = e.target.getAttribute('your-id');
+    console.log('/api/replys/' + store_id + '/' + selected_id);
     axios.delete('/api/replys/' + store_id + '/' + selected_id, {
         password: input_password
     })
     .then((ajax) => {
         const result = ajax.data;
+        console.log(result);
         if(result.success) {
             new Ajax.Request('/api/replys/' + store_id, {
                 method: 'GET', 
