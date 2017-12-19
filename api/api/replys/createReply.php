@@ -11,6 +11,9 @@
     $contents = $_POST['contents'];
     $created = time();
 
+    echo $username;
+    echo $created;
+
     $query = "INSERT INTO reply(store_id, username, password, reply, created) VALUES(:store_id, :username, :password, :reply, :created)";
         
     $stmt = $db->prepare($query);
@@ -19,8 +22,6 @@
     $stmt->bindParam(':password', $password);
     $stmt->bindParam(':reply', $contents);
     $stmt->bindParam(':created', $created);
-
-    $stmt->debugDumpParams();
     
     $result = array(
         'success' => $stmt->execute()
