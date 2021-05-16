@@ -6,7 +6,7 @@
 
 ## Members
 - [thy2134](https://github.com/thy2134) : Kyu-Jin Cho
-- [alchon](https://github.com/alchon) : Hyeon-Beom Seo
+- [HyeonBeomSeo](https://github.com/hbseo) : Hyeon-Beom Seo
 - [JoonHyukYang](https://github.com/JoonHyukYang) : Joon-Hyuk Yang
 - [Byeon-jaeheon](https://github.com/Byeon-jaeheon) : Jae-Heon Byeon
 - [ProDroper](https://github.com/ProDroper) : Jun Choi
@@ -17,8 +17,21 @@ When we have a lunch time, we have to think what to eat. As you know this is ver
 So, we thought about list of restaurants in front of the school by category.  
 Our project informs about restaurants.  
 
-## Demo  
-[ERICA_restaurant](https://what-to-eat-erica.duckdns.org:8443/)
+## Overview  
+<details><summary>Details</summary>
+
+* __mouseover__ - Show name and category of restaurant.  
+![](https://raw.githubusercontent.com/hbseo/ERICA_restaurant/master/pictures/mouseover.PNG)  
+* __search__ - Search restaurant's name or category.  
+![](https://raw.githubusercontent.com/hbseo/ERICA_restaurant/master/pictures/search.PNG)  
+* __information__ - View restaurant's info. Also users can write comments.  
+![](https://raw.githubusercontent.com/hbseo/ERICA_restaurant/master/pictures/comments.PNG)  
+* __drawing lots__ - If you want to recommend a restaurant.  
+![](https://raw.githubusercontent.com/hbseo/ERICA_restaurant/master/pictures/jebi1.PNG)  
+* __food cup__ - You can choose a restaurant by repeating your choices.  
+![](https://raw.githubusercontent.com/hbseo/ERICA_restaurant/master/pictures/foodcup2.PNG)  
+
+</details>
 
 ## Features  
 - Search restaurants based on name or category.  
@@ -63,4 +76,4 @@ sql/ dump.sql -> load DB.
 Put it on the Apache server and run it.  
 
 ## Feedback  
-To report bugs, please create a GitHub issue.  
+To report bugs, please create a GitHub [issue](https://github.com/hbseo/ERICA_restaurant/issues).  
